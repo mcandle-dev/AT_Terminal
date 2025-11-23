@@ -1,0 +1,4320 @@
+type=1400 audit(0.0:10648): avc: denied { read write } for name="bluetoothcts" dev="tmpfs" ino=11652 scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1 app=com.example.apidemo
+type=1400 audit(0.0:10649): avc: denied { open } for path="/dev/bluetoothcts" dev="tmpfs" ino=11652 scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1 app=com.example.apidemo
+Lib_ComOpen ucPortNo = 4 com = /dev/ttyS1 
+com_path /dev/ttyS1
+type=1400 audit(0.0:10650): avc: denied { read write } for name="ttyS1" dev="tmpfs" ino=891 scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:serial_device:s0 tclass=chr_file permissive=1 app=com.example.apidemo
+Lib_UartInit(com_fd[4]) [72]
+type=1400 audit(0.0:10651): avc: denied { open } for path="/dev/ttyS1" dev="tmpfs" ino=891 scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:serial_device:s0 tclass=chr_file permissive=1 app=com.example.apidemo
+COMX = /dev/ttyS1 baudrate = 115200, data_bits = 8, parity = N, stop_bits = 1
+Send Length: 15, Data: AT+OBSERVER=0
+type=1400 audit(0.0:10652): avc: denied { ioctl } for path="/dev/ttyS1" dev="tmpfs" ino=891 ioctlcmd=0x540b scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:serial_device:s0 tclass=chr_file permissive=1 app=com.example.apidemo
+Recv Length: 4, Data: OK
+Send Length: 9, Data: AT+EXIT
+Recv Length: 4, Data: OK
+Send Length: 3, Data: +++
+Recv Length: 4, Data: OK
+Send Length: 12, Data: AT+VERSION
+Recv Length: 45, Data: AT+VERSION=RF_BM_BG22A3_V0.3.3_2022.7.6
+OK
+Send Length: 9, Data: AT+MAC?
+Recv Length: 30, Data: AT+MAC=00:3C:84:2A:C8:6B
+OK
+[com.example.apidemo/com.example.apidemo.MainActivity#0](id:b000000058,api:0,p:-1,c:176) disconnect: not connected (req=1)
+EGLNativeWindowType 0x71525d7860 disconnect failed
+onClick: macAddress
+onClick: broadcastName
+onClick: rssi0
+onClick: manufacturerId
+onClick: data
+Starting BLE scan...
+type=1400 audit(0.0:10653): avc: denied { ioctl } for path="/dev/ttyS1" dev="tmpfs" ino=891 ioctlcmd=0x540b scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:serial_device:s0 tclass=chr_file permissive=1 app=com.example.apidemo
+Send Length: 10, Data: AT+ROLE?
+Recv Length: 15, Data: AT+ROLE=1
+OK
+Send Length: 10, Data: AT+ROLE?
+Recv Length: 15, Data: AT+ROLE=1
+OK
+SENDING...cmd=1,0,,,0,,
+SENDING...at cmd=AT+OBSERVER=1,0,,,0,,
+Send Length: 23, Data: AT+OBSERVER=1,0,,,0,,
+runLib_ComRecvAT: recvDataLen0
+Lib_ComRecvAT recvData: 
+runLib_ComRecvAT: recvDataLen0
+Lib_ComRecvAT recvData: 
+runLib_ComRecvAT: recvDataLen4
+Lib_ComRecvAT recvData: 4F4B0D0A
+runLib_ComRecvAT: recvDataLen367
+Lib_ComRecvAT recvData: 4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38352C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38352C5253503A303330333738464530364646363530303031433930350D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D38392C4144563A3131303743464346434643464346434643464346383639453846393039453934394539340D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D38382C5253503A3131303739304137414643434142423143373935424133313436313634364343394242320D0A4D41433A35383A32393A38443A34393A30443A43332C525353493A2D37352C4144563A3038303936443633363136453634364336353035303537383536323430310D0A
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732375,
+        "RSP_org": "030378FE06FF650001C905"
+    }
+]
+runLib_ComRecvAT: recvDataLen1000
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732376,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    }
+]
+Lib_ComRecvAT recvData: 4D41433A34363A34463A43453A43433A31433A42352C525353493A2D37332C4144563A30383039364436333631364536343643363530353033333431323637343530353136333431323433343830363136363734353444343334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38352C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38342C5253503A303330333738464530364646363530303031433930350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38382C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35353A44313A31433A33463A42343A34442C525353493A2D36372C4144563A303230313141303230413037304146463443303031303035303331384330383733360D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D39352C4144563A3131303743464346434643464346434643464346383639453846393039453934394539340D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141
+handleMessage: [
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732383,
+        "RSP_org": "110790A7AFCCABB1C795BA31461646CC9BB2",
+        "RSP": {
+            "Service UUIDs": "90 A7 AF CC AB B1 C7 95 BA 31 46 16 46 CC 9B B2 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732376,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732383,
+        "RSP_org": "110790A7AFCCABB1C795BA31461646CC9BB2",
+        "RSP": {
+            "Service UUIDs": "90 A7 AF CC AB B1 C7 95 BA 31 46 16 46 CC 9B B2 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732376,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732383,
+        "RSP_org": "110790A7AFCCABB1C795BA31461646CC9BB2",
+        "RSP": {
+            "Service UUIDs": "90 A7 AF CC AB B1 C7 95 BA 31 46 16 46 CC 9B B2 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732376,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -75,
+        "Timestamp": 1742423732385
+    }
+]
+runLib_ComRecvAT: recvDataLen1000
+Lib_ComRecvAT recvData: 303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35413A32313A32453A41313A35333A35302C525353493A2D37342C4144563A30323031303231424646373530303032313834314131393742334342453444444141334139443939424631354646394639353244373342304334314646390D0A4D41433A35413A32313A32453A41313A35333A35302C525353493A2D37322C5253503A303446463735303034350D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38372C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C5253503A303330333738464530364646363530303031433930350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39302C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A37383A32443A41413A32313A34323A44462C525353493A2D37322C4144563A30383039364436333631364536343643363530323041463930333033333431323045313633343132364436333631364536343643363532453634363537360D0A4D41433A44383A41333A35433A37343A30433A36392C525353493A2D39312C4144563A31424646373530303432303430313830363644384133354337343043363944414133354337343043363830313038303030303030303030300D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D38382C4144563A3131303743464346434643464346434643464346383639453846393039453934394539340D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D38392C5253503A3131303739304137414643434142423143373935424133313436313634364343394242320D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732504
+    }
+]
+runLib_ComRecvAT: recvDataLen753
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732504
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732518,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732504
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732518,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732504
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732511,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732518,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+uid=10135(com.example.apidemo) identical 4 lines
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732504
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732511,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732518,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423732519
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732504
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732511,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732518,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423732519
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -95,
+        "Timestamp": 1742423732521
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732504
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732511,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732518,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+Lib_ComRecvAT recvData: 303232353030383930303030303030300D0A4D41433A32413A45453A46343A37353A37333A31422C525353493A2D35332C4144563A31454646303630303031303932303232374630424241443636443739454246463532353930314436353531353535454439413131343536393432333932440D0A4D41433A37393A33363A45313A38443A43463A45332C525353493A2D38342C4144563A3032303131413032304131313042464634433030313030363132314445424235423133380D0A4D41433A35383A32393A38443A34393A30443A43332C525353493A2D37372C4144563A3038303936443633363136453634364336353035303537383536323430310D0A4D41433A34363A34463A43453A43433A31433A42352C525353493A2D37372C4144563A30383039364436333631364536343643363530353033333431323637343530353136333431323433343830363136363734353444343334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38342C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35353A44313A31433A33463A42343A34442C525353493A2D36392C4144563A303230313141303230413037304146463443303031303035303331384330383733360D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38372C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C5253503A303330333738464530364646363530303031433930350D0A
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732588,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+uid=10135(com.example.apidemo) identical 2 lines
+handleMessage: [
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732588,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732591
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732588,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732591
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732588,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -91,
+        "Timestamp": 1742423732593
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732591
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -89,
+        "Timestamp": 1742423732596,
+        "RSP_org": "110790A7AFCCABB1C795BA31461646CC9BB2",
+        "RSP": {
+            "Service UUIDs": "90 A7 AF CC AB B1 C7 95 BA 31 46 16 46 CC 9B B2 "
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732588,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -91,
+        "Timestamp": 1742423732593
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732591
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -89,
+        "Timestamp": 1742423732596,
+        "RSP_org": "110790A7AFCCABB1C795BA31461646CC9BB2",
+        "RSP": {
+            "Service UUIDs": "90 A7 AF CC AB B1 C7 95 BA 31 46 16 46 CC 9B B2 "
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -72,
+        "Timestamp": 1742423732585,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732588,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -91,
+        "Timestamp": 1742423732593
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732590,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+runLib_ComRecvAT: recvDataLen601
+Lib_ComRecvAT recvData: 4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38352C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38352C5253503A303330333738464530364646363530303031433930350D0A4D41433A45313A41303A35393A32333A44463A41332C525353493A2D37312C4144563A3141464634433030313230323634303130373131303630443936423939363332463936423943344245364335363146384432323741350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38382C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A
+runLib_ComRecvAT: recvDataLen1000
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+Lib_ComRecvAT recvData: 4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A37393A33363A45313A38443A43463A45332C525353493A2D38382C4144563A3032303131413032304131313042464634433030313030363132314445424235423133380D0A4D41433A35383A32393A38443A34393A30443A43332C525353493A2D37332C4144563A3038303936443633363136453634364336353035303537383536323430310D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38372C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38372C5253503A303330333738464530364646363530303031433930350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39302C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A34363A34463A43453A43433A31433A42352C525353493A2D37352C4144563A30383039364436333631364536343643363530353033333431323637343530353136333431323433343830363136363734353444343334310D0A4D41433A46303A36383A43453A31413A44353A37392C525353493A2D38382C4144563A303746463443303031323032303030310D0A4D41433A32413A45453A46343A37353A37333A31422C525353493A2D36372C4144563A31454646303630303031303932303232374630424241443636443739454246463532353930314436353531353535454439413131343536393432333932440D0A4D41433A3535
+handleMessage: [
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732696
+    }
+]
+handleMessage: [
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732697
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732696
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732698
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732697
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732696
+    }
+]
+uid=10135(com.example.apidemo) identical 1 line
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732698
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732697
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732696
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -69,
+        "Timestamp": 1742423732703
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732698
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732697
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732696
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -69,
+        "Timestamp": 1742423732703
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732698
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732705,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732697
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732696
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -69,
+        "Timestamp": 1742423732703
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732698
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423732705,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -53,
+        "Timestamp": 1742423732695
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732702,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423732697
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -84,
+        "Timestamp": 1742423732696
+    }
+]
+runLib_ComRecvAT: recvDataLen1000
+Lib_ComRecvAT recvData: 3A44313A31433A33463A42343A34442C525353493A2D36362C4144563A303230313141303230413037304146463443303031303035303331384330383733360D0A4D41433A35413A32313A32453A41313A35333A35302C525353493A2D38342C4144563A30323031303231424646373530303032313834314131393742334342453444444141334139443939424631354646394639353244373342304334314646390D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38382C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C5253503A303330333738464530364646363530303031433930350D0A4D41433A35413A32313A32453A41313A35333A35302C525353493A2D38332C5253503A303446463735303034350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38362C4144563A30434646303030303534353336443532363434413631363137433131303746433944443042334342383445303834303634324633463745314530424643420D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38362C5253503A31424646303030304246454342384145433146443546363536323333333737433335333033343336363136353636333133353333333333320D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732814,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732814,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732811,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732814,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732811,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732814,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "E1:A0:59:23:DF:A3",
+        "ADV_org": "1AFF4C00120264010711060D96B99632F96B9C4BE6C561F8D227A5",
+        "ADV": {
+            "Manufacturer Data": "4C 00 12 02 64 01 07 11 06 0D 96 B9 96 32 F9 6B 9C 4B E6 C5 61 F8 D2 27 A5 "
+        },
+        "RSSI": -71,
+        "Timestamp": 1742423732812
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732811,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732814,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+uid=10135(com.example.apidemo) identical 1 line
+handleMessage: [
+    {
+        "MAC": "E1:A0:59:23:DF:A3",
+        "ADV_org": "1AFF4C00120264010711060D96B99632F96B9C4BE6C561F8D227A5",
+        "ADV": {
+            "Manufacturer Data": "4C 00 12 02 64 01 07 11 06 0D 96 B9 96 32 F9 6B 9C 4B E6 C5 61 F8 D2 27 A5 "
+        },
+        "RSSI": -71,
+        "Timestamp": 1742423732812
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732811,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732814,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+runLib_ComRecvAT: recvDataLen289
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732940
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+uid=10135(com.example.apidemo) identical 1 line
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732942,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732940
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+Lib_ComRecvAT recvData: 383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A37383A32443A41413A32313A34323A44462C525353493A2D37332C4144563A30383039364436333631364536343643363530323041463930333033333431323045313633343132364436333631364536343643363532453634363537360D0A
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732942,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732940
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732942,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732940
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -75,
+        "Timestamp": 1742423732946
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732942,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732940
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -75,
+        "Timestamp": 1742423732946
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732942,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "F0:68:CE:1A:D5:79",
+        "ADV_org": "07FF4C0012020001",
+        "ADV": {
+            "Manufacturer Data": "4C 00 12 02 00 01 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732947
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732940
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -75,
+        "Timestamp": 1742423732946
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423732942,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "F0:68:CE:1A:D5:79",
+        "ADV_org": "07FF4C0012020001",
+        "ADV": {
+            "Manufacturer Data": "4C 00 12 02 00 01 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732947
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423732948
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423732945,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423732940
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423732940
+    }
+]
+runLib_ComRecvAT: recvDataLen67
+Lib_ComRecvAT recvData: 4D41433A35383A32393A38443A34393A30443A43332C525353493A2D37372C4144563A3038303936443633363136453634364336353035303537383536323430310D0A
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733061,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733061,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733062,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733061,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733062,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733061,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733060,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733062,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+uid=10135(com.example.apidemo) identical 3 lines
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733061,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733060,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733062,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    },
+    {
+        "MAC": "5C:22:DA:2A:EB:38",
+        "ADV_org": "0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB",
+        "ADV": {
+            "Manufacturer Data": "00 00 54 53 6D 52 64 4A 61 61 7C ",
+            "Service UUIDs": "FC 9D D0 B3 CB 84 E0 84 06 42 F3 F7 E1 E0 BF CB "
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733064,
+        "RSP_org": "1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332",
+        "RSP": {
+            "Manufacturer Data": "00 00 BF EC B8 AE C1 FD 5F 65 62 33 37 7C 35 30 34 36 61 65 66 31 35 33 33 32 "
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733061,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733060,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733062,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -66,
+        "Timestamp": 1742423733056
+    },
+    {
+        "MAC": "5C:22:DA:2A:EB:38",
+        "ADV_org": "0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB",
+        "ADV": {
+            "Manufacturer Data": "00 00 54 53 6D 52 64 4A 61 61 7C ",
+            "Service UUIDs": "FC 9D D0 B3 CB 84 E0 84 06 42 F3 F7 E1 E0 BF CB "
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733064,
+        "RSP_org": "1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332",
+        "RSP": {
+            "Manufacturer Data": "00 00 BF EC B8 AE C1 FD 5F 65 62 33 37 7C 35 30 34 36 61 65 66 31 35 33 33 32 "
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733061,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733060,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733062,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+runLib_ComRecvAT: recvDataLen225
+Lib_ComRecvAT recvData: 4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38382C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38372C5253503A303330333738464530364646363530303031433930350D0A4D41433A35353A44313A31433A33463A42343A34442C525353493A2D36342C4144563A303230313141303230413037304146463443303031303035303331384330383733360D0A
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423733113,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+uid=10135(com.example.apidemo) identical 1 line
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423733113,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+---------------------------- PROCESS ENDED (2565) for package com.example.apidemo ----------------------------
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733114
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423733113,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733139
+    }
+]
+runLib_ComRecvAT: recvDataLen1000
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733213,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733213,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "55:D1:1C:3F:B4:4D",
+        "ADV_org": "02011A020A070AFF4C0010050318C08736",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 7,
+            "Manufacturer Data": "4C 00 10 05 03 18 C0 87 36 "
+        },
+        "RSSI": -64,
+        "Timestamp": 1742423733214
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733213,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    }
+]
+Lib_ComRecvAT recvData: 4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35413A32313A32453A41313A35333A35302C525353493A2D37392C4144563A30323031303231424646373530303032313834314131393742334342453444444141334139443939424631354646394639353244373342304334314646390D0A4D41433A35413A32313A32453A41313A35333A35302C525353493A2D37372C5253503A303446463735303034350D0A4D41433A37443A35393A35453A31453A37363A35332C525353493A2D38332C4144563A30333033463346450D0A4D41433A37443A35393A35453A31453A37363A35332C525353493A2D38332C5253503A31453136463346453441313732333439353533313335313133324332344435423630304644324337313139373331423235443242413542423843453337450D0A4D41433A32413A45453A46343A37353A37333A31422C525353493A2D36322C4144563A31454646303630303031303932303232374630424241443636443739454246463532353930314436353531353535454439413131343536393432333932440D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38332C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38332C5253503A303330333738464530364646363530303031433930350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38332C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A44383A41333A35433A37343A30433A36392C525353493A2D38392C4144563A31424646373530303432303430313830363644384133354337343043363944414133354337343043363830313038303030303030303030300D0A4D41433A44383A42
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "7D:59:5E:1E:76:53",
+        "ADV_org": "0303F3FE",
+        "ADV": {
+            "Service UUIDs": "F3 FE "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733336,
+        "RSP_org": "1E16F3FE4A1723495531351132C24D5B600FD2C7119731B25D2BA5BB8CE37E",
+        "RSP": {
+            "Service Data UUID FEF3": [
+                "4A 17 23 49 55 31 35 11 32 C2 4D 5B 60 0F D2 C7 11 97 31 B2 5D 2B A5 BB 8C E3 7E "
+            ]
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "7D:59:5E:1E:76:53",
+        "ADV_org": "0303F3FE",
+        "ADV": {
+            "Service UUIDs": "F3 FE "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733336,
+        "RSP_org": "1E16F3FE4A1723495531351132C24D5B600FD2C7119731B25D2BA5BB8CE37E",
+        "RSP": {
+            "Service Data UUID FEF3": [
+                "4A 17 23 49 55 31 35 11 32 C2 4D 5B 60 0F D2 C7 11 97 31 B2 5D 2B A5 BB 8C E3 7E "
+            ]
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "7D:59:5E:1E:76:53",
+        "ADV_org": "0303F3FE",
+        "ADV": {
+            "Service UUIDs": "F3 FE "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733336,
+        "RSP_org": "1E16F3FE4A1723495531351132C24D5B600FD2C7119731B25D2BA5BB8CE37E",
+        "RSP": {
+            "Service Data UUID FEF3": [
+                "4A 17 23 49 55 31 35 11 32 C2 4D 5B 60 0F D2 C7 11 97 31 B2 5D 2B A5 BB 8C E3 7E "
+            ]
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -62,
+        "Timestamp": 1742423733337
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "7D:59:5E:1E:76:53",
+        "ADV_org": "0303F3FE",
+        "ADV": {
+            "Service UUIDs": "F3 FE "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733336,
+        "RSP_org": "1E16F3FE4A1723495531351132C24D5B600FD2C7119731B25D2BA5BB8CE37E",
+        "RSP": {
+            "Service Data UUID FEF3": [
+                "4A 17 23 49 55 31 35 11 32 C2 4D 5B 60 0F D2 C7 11 97 31 B2 5D 2B A5 BB 8C E3 7E "
+            ]
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733339,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -62,
+        "Timestamp": 1742423733337
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+uid=10135(com.example.apidemo) identical 2 lines
+handleMessage: [
+    {
+        "MAC": "7D:59:5E:1E:76:53",
+        "ADV_org": "0303F3FE",
+        "ADV": {
+            "Service UUIDs": "F3 FE "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733336,
+        "RSP_org": "1E16F3FE4A1723495531351132C24D5B600FD2C7119731B25D2BA5BB8CE37E",
+        "RSP": {
+            "Service Data UUID FEF3": [
+                "4A 17 23 49 55 31 35 11 32 C2 4D 5B 60 0F D2 C7 11 97 31 B2 5D 2B A5 BB 8C E3 7E "
+            ]
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733339,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -62,
+        "Timestamp": 1742423733337
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+runLib_ComRecvAT: recvDataLen1000
+handleMessage: [
+    {
+        "MAC": "7D:59:5E:1E:76:53",
+        "ADV_org": "0303F3FE",
+        "ADV": {
+            "Service UUIDs": "F3 FE "
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733336,
+        "RSP_org": "1E16F3FE4A1723495531351132C24D5B600FD2C7119731B25D2BA5BB8CE37E",
+        "RSP": {
+            "Service Data UUID FEF3": [
+                "4A 17 23 49 55 31 35 11 32 C2 4D 5B 60 0F D2 C7 11 97 31 B2 5D 2B A5 BB 8C E3 7E "
+            ]
+        }
+    },
+    {
+        "MAC": "5A:21:2E:A1:53:50",
+        "ADV_org": "0201021BFF7500021841A197B3CBE4DDAA3A9D99BF15FF9F952D73B0C41FF9",
+        "ADV": {
+            "Flags": "02 ",
+            "Manufacturer Data": "75 00 02 18 41 A1 97 B3 CB E4 DD AA 3A 9D 99 BF 15 FF 9F 95 2D 73 B0 C4 1F F9 "
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733334,
+        "RSP_org": "04FF750045",
+        "RSP": {
+            "Manufacturer Data": "75 00 45 "
+        }
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -83,
+        "Timestamp": 1742423733339,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -62,
+        "Timestamp": 1742423733337
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -89,
+        "Timestamp": 1742423733342
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733341,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+Lib_ComRecvAT recvData: 433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D39302C4144563A3131303743464346434643464346434643464346383639453846393039453934394539340D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A32413A45453A46343A37353A37333A31422C525353493A2D35362C4144563A31454646303630303031303932303232374630424241443636443739454246463532353930314436353531353535454439413131343536393432333932440D0A4D41433A37383A32443A41413A32313A34323A44462C525353493A2D37372C4144563A30383039364436333631364536343643363530323041463930333033333431323045313633343132364436333631364536343643363532453634363537360D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C5253503A303330333738464530364646363530303031433930350D0A4D41433A37393A33363A45313A38443A43463A45332C525353493A2D39312C4144563A3032303131413032304131313042464634433030313030363132314445424235423133380D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+uid=10135(com.example.apidemo) identical 1 line
+handleMessage: [
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -56,
+        "Timestamp": 1742423733444
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733445
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -56,
+        "Timestamp": 1742423733444
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733445
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733447,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -56,
+        "Timestamp": 1742423733444
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+---------------------------- PROCESS STARTED (2661) for package com.example.apidemo ----------------------------
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733445
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733447,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -56,
+        "Timestamp": 1742423733444
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733445
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733447,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -56,
+        "Timestamp": 1742423733444
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -91,
+        "Timestamp": 1742423733448
+    }
+]
+handleMessage: [
+    {
+        "MAC": "78:2D:AA:21:42:DF",
+        "ADV_org": "08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576",
+        "ADV": {
+            "Device Name": "mcandle",
+            "TX Power Level": -7,
+            "Service UUIDs": "34 12 ",
+            "Service Data UUID 1234": [
+                "6D 63 61 6E 64 6C 65 2E 64 65 76 "
+            ]
+        },
+        "RSSI": -77,
+        "Timestamp": 1742423733445
+    },
+    {
+        "MAC": "63:FF:46:07:B7:B2",
+        "ADV_org": "1107CFCFCFCFCFCFCFCF869E8F909E949E94",
+        "ADV": {
+            "Service UUIDs": "CF CF CF CF CF CF CF CF 86 9E 8F 90 9E 94 9E 94 "
+        },
+        "RSSI": -90,
+        "Timestamp": 1742423733442
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -86,
+        "Timestamp": 1742423733447,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "2A:EE:F4:75:73:1B",
+        "ADV_org": "1EFF0600010920227F0BBAD66D79EBFF525901D6551555ED9A11456942392D",
+        "ADV": {
+            "Manufacturer Data": "06 00 01 09 20 22 7F 0B BA D6 6D 79 EB FF 52 59 01 D6 55 15 55 ED 9A 11 45 69 42 39 2D "
+        },
+        "RSSI": -56,
+        "Timestamp": 1742423733444
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733449,
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        }
+    },
+    {
+        "MAC": "79:36:E1:8D:CF:E3",
+        "ADV_org": "02011A020A110BFF4C001006121DEBB5B138",
+        "ADV": {
+            "Flags": "1A ",
+            "TX Power Level": 17,
+            "Manufacturer Data": "4C 00 10 06 12 1D EB B5 B1 38 "
+        },
+        "RSSI": -91,
+        "Timestamp": 1742423733448
+    }
+]
+runLib_ComRecvAT: recvDataLen1000
+Lib_ComRecvAT recvData: 333834323433333333383334333333393436333334310D0A4D41433A35383A32393A38443A34393A30443A43332C525353493A2D36372C4144563A3038303936443633363136453634364336353035303537383536323430310D0A4D41433A34363A34463A43453A43433A31433A42352C525353493A2D37332C4144563A30383039364436333631364536343643363530353033333431323637343530353136333431323433343830363136363734353444343334310D0A4D41433A44383A41333A35433A37343A30433A36392C525353493A2D38382C4144563A31424646373530303432303430313830363644384133354337343043363944414133354337343043363830313038303030303030303030300D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38332C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38322C5253503A303330333738464530364646363530303031433930350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38362C4144563A30434646303030303534353336443532363434413631363137433131303746433944443042334342383445303834303634324633463745314530424643420D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38352C5253503A31424646303030304246454342384145433146443546363536323333333737433335333033343336363136353636333133353333333333320D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A32413A45453A46343A37353A37333A3142
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733584
+    }
+]
+handleMessage: [
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733584
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733586
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -87,
+        "Timestamp": 1742423733584
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733586
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423733587
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733594,
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733586
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -82,
+        "Timestamp": 1742423733589,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423733587
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733594,
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+uid=10135(com.example.apidemo) identical 2 lines
+handleMessage: [
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+handleMessage: [
+    {
+        "MAC": "5C:22:DA:2A:EB:38",
+        "ADV_org": "0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB",
+        "ADV": {
+            "Manufacturer Data": "00 00 54 53 6D 52 64 4A 61 61 7C ",
+            "Service UUIDs": "FC 9D D0 B3 CB 84 E0 84 06 42 F3 F7 E1 E0 BF CB "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423733593,
+        "RSP_org": "1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332",
+        "RSP": {
+            "Manufacturer Data": "00 00 BF EC B8 AE C1 FD 5F 65 62 33 37 7C 35 30 34 36 61 65 66 31 35 33 33 32 "
+        }
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733586
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -82,
+        "Timestamp": 1742423733589,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423733587
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733594,
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5C:22:DA:2A:EB:38",
+        "ADV_org": "0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB",
+        "ADV": {
+            "Manufacturer Data": "00 00 54 53 6D 52 64 4A 61 61 7C ",
+            "Service UUIDs": "FC 9D D0 B3 CB 84 E0 84 06 42 F3 F7 E1 E0 BF CB "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423733593,
+        "RSP_org": "1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332",
+        "RSP": {
+            "Manufacturer Data": "00 00 BF EC B8 AE C1 FD 5F 65 62 33 37 7C 35 30 34 36 61 65 66 31 35 33 33 32 "
+        }
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733586
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -82,
+        "Timestamp": 1742423733589,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423733587
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733594,
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+runLib_ComRecvAT: recvDataLen1000
+handleMessage: [
+    {
+        "MAC": "5C:22:DA:2A:EB:38",
+        "ADV_org": "0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB",
+        "ADV": {
+            "Manufacturer Data": "00 00 54 53 6D 52 64 4A 61 61 7C ",
+            "Service UUIDs": "FC 9D D0 B3 CB 84 E0 84 06 42 F3 F7 E1 E0 BF CB "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423733593,
+        "RSP_org": "1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332",
+        "RSP": {
+            "Manufacturer Data": "00 00 BF EC B8 AE C1 FD 5F 65 62 33 37 7C 35 30 34 36 61 65 66 31 35 33 33 32 "
+        }
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733586
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -82,
+        "Timestamp": 1742423733589,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423733587
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733594,
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+handleMessage: [
+    {
+        "MAC": "5C:22:DA:2A:EB:38",
+        "ADV_org": "0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB",
+        "ADV": {
+            "Manufacturer Data": "00 00 54 53 6D 52 64 4A 61 61 7C ",
+            "Service UUIDs": "FC 9D D0 B3 CB 84 E0 84 06 42 F3 F7 E1 E0 BF CB "
+        },
+        "RSSI": -85,
+        "Timestamp": 1742423733593,
+        "RSP_org": "1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332",
+        "RSP": {
+            "Manufacturer Data": "00 00 BF EC B8 AE C1 FD 5F 65 62 33 37 7C 35 30 34 36 61 65 66 31 35 33 33 32 "
+        }
+    },
+    {
+        "MAC": "46:4F:CE:CC:1C:B5",
+        "ADV_org": "08096D63616E646C65050334126745051634124348061667454D4341",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "34 12 67 45 ",
+            "Service Data UUID 1234": [
+                "43 48 "
+            ],
+            "Service Data UUID 4567": [
+                "4D 43 41 "
+            ]
+        },
+        "RSSI": -73,
+        "Timestamp": 1742423733586
+    },
+    {
+        "MAC": "5E:60:BA:25:1A:BF",
+        "ADV_org": "0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003",
+        "ADV": {
+            "Flags": "06 ",
+            "Service Data UUID FDF7": [
+                "01 E2 F3 21 5B 67 EA 53 64 90 A5 E9 5D 80 3A 91 EC 00 00 00 00 03 "
+            ]
+        },
+        "RSSI": -82,
+        "Timestamp": 1742423733589,
+        "RSP_org": "030378FE06FF650001C905",
+        "RSP": {
+            "Service UUIDs": "78 FE ",
+            "Manufacturer Data": "65 00 01 C9 05 "
+        }
+    },
+    {
+        "MAC": "D8:A3:5C:74:0C:69",
+        "ADV_org": "1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000",
+        "ADV": {
+            "Manufacturer Data": "75 00 42 04 01 80 66 D8 A3 5C 74 0C 69 DA A3 5C 74 0C 68 01 08 00 00 00 00 00 "
+        },
+        "RSSI": -88,
+        "Timestamp": 1742423733587
+    },
+    {
+        "MAC": "D8:BC:38:43:9F:3A",
+        "RSP_org": "020A0511094456325F443842433338343339463341",
+        "RSP": {
+            "TX Power Level": 5,
+            "Device Name": "DV2_D8BC38439F3A"
+        },
+        "RSSI": -81,
+        "Timestamp": 1742423733594,
+        "ADV_org": "02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000",
+        "ADV": {
+            "Flags": "06 ",
+            "Service UUIDs": "1B C5 D5 A5 02 00 AA 9D E3 11 2A F2 10 19 AA 06 ",
+            "Manufacturer Data": "02 25 00 89 00 00 00 00 "
+        }
+    },
+    {
+        "MAC": "58:29:8D:49:0D:C3",
+        "ADV_org": "08096D63616E646C65050578562401",
+        "ADV": {
+            "Device Name": "mcandle",
+            "Service UUIDs": "78 56 24 01 "
+        },
+        "RSSI": -67,
+        "Timestamp": 1742423733585
+    }
+]
+Lib_ComRecvAT recvData: 2C525353493A2D36362C4144563A31454646303630303031303932303232374630424241443636443739454246463532353930314436353531353535454439413131343536393432333932440D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39302C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38362C5253503A303330333738464530364646363530303031433930350D0A4D41433A44383A41333A35433A37343A30433A36392C525353493A2D38392C4144563A31424646373530303432303430313830363644384133354337343043363944414133354337343043363830313038303030303030303030300D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D39322C4144563A3131303743464346434643464346434643464346383639453846393039453934394539340D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38312C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A37383A32443A41413A32313A34323A44462C525353493A2D37332C4144563A30383039364436333631364536343643363530323041463930333033333431323045313633343132364436333631364536343643363532453634363537360D0A4D41433A37393A33363A45313A38443A43463A45332C525353493A2D38322C4144563A3032303131413032304131313042464634433030313030363132314445424235423133380D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A303230313036313130363142433544354135303230304141394445333131324146323130313941
+logcat: Unexpected EOF!
+
+This means that either the device shut down, logd crashed, or this instance of logcat was unable to read log
+messages as quickly as they were being produced.
+
+If you have enabled significant logging, look into using the -G option to increase log buffer sizes.

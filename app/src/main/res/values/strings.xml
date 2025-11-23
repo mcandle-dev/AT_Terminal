@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">BLE AT Command Tester</string>
+
+    <!-- Button texts -->
+    <string name="btn_enable_master">Enable\nMaster</string>
+    <string name="btn_get_mac">Get MAC</string>
+    <string name="btn_scan">Scan</string>
+    <string name="btn_stop_scan">Stop Scan</string>
+    <string name="btn_connect">Connect</string>
+    <string name="btn_send_data">Send Data</string>
+    <string name="btn_clear">Clear Terminal</string>
+
+    <!-- Dialog texts -->
+    <string name="dialog_enable_master">Enable Master Mode</string>
+    <string name="dialog_scan_params">Scan Parameters</string>
+    <string name="dialog_connect">Connect to Device</string>
+    <string name="dialog_send_data">Send Data</string>
+
+    <!-- Hints -->
+    <string name="hint_mac_address">AA:BB:CC:DD:EE:FF</string>
+    <string name="hint_device_name">Device Name</string>
+    <string name="hint_rssi">-80</string>
+    <string name="hint_hex_data">48656C6C6F</string>
+    <string name="hint_handle">1</string>
+
+    <!-- Messages -->
+    <string name="msg_invalid_mac">Invalid MAC address format</string>
+    <string name="msg_invalid_hex">Invalid hex data format</string>
+    <string name="msg_invalid_handle">Invalid handle</string>
+</resources>

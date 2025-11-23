@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Enable Master Section -->
+        <RadioGroup
+            android:id="@+id/rgEnableMaster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enable Master Mode:"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <RadioButton
+                android:id="@+id/rbEnable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enable (1)" />
+
+            <RadioButton
+                android:id="@+id/rbDisable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disable (0)" />
+
+        </RadioGroup>
+
+        <!-- Scan Parameters Section -->
+        <LinearLayout
+            android:id="@+id/layoutScanParams"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Scan Parameters:"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MAC Address (filter):"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etMacAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="AA:BB:CC:DD:EE:FF"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Broadcast Name (filter):"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etBroadcastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Device Name"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Min RSSI:"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etMinRssi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="-80"
+                android:inputType="numberSigned" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Manufacturer ID (filter):"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etManufacturerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Manufacturer ID"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data (filter):"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Filter Data"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <!-- Connect Section -->
+        <LinearLayout
+            android:id="@+id/layoutConnect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Connect to Device:"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MAC Address:"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etConnectMac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="AA:BB:CC:DD:EE:FF"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <!-- Send Data Section -->
+        <LinearLayout
+            android:id="@+id/layoutSendData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Data:"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Connection Handle:"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etHandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="1"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data (Hex):"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etHexData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="48656C6C6F"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnExecute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Execute" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

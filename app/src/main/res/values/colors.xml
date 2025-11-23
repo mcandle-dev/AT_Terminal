@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#808080</color>
+    <color name="default_text_color">#000000</color>
+    <color name="teal_700">#00897B</color>
+
+    <!-- Terminal log colors -->
+    <color name="log_send">#2196F3</color>      <!-- Blue for sent commands -->
+    <color name="log_receive">#4CAF50</color>   <!-- Green for received responses -->
+    <color name="log_scan">#FFC107</color>      <!-- Yellow for scan results -->
+    <color name="log_error">#F44336</color>     <!-- Red for errors -->
+    <color name="log_info">#9E9E9E</color>      <!-- Gray for info -->
+
+    <!-- UI colors -->
+    <color name="terminal_background">#000000</color>
+    <color name="button_stop_scan">#D32F2F</color>
+</resources>

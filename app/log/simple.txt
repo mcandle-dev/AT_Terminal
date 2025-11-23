@@ -1,0 +1,485 @@
+--------- beginning of system
+--------- beginning of kernel
+--------- beginning of main
+---------------------------- PROCESS STARTED (2284) for package com.example.test1 ----------------------------
+Accessing hidden method Ljava/lang/Thread;->exit()V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/ThreadGroup;->threadTerminated(Ljava/lang/Thread;)V (greylist, linking, allowed)
+Accessing hidden field Ljava/lang/Thread;->target:Ljava/lang/Runnable; (greylist, linking, allowed)
+Accessing hidden field Ljava/lang/Thread;->inheritedAccessControlContext:Ljava/security/AccessControlContext; (greylist, linking, allowed)
+Accessing hidden field Ljava/lang/Thread;->blocker:Lsun/nio/ch/Interruptible; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->uncaughtExceptionHandler:Ljava/lang/Thread$UncaughtExceptionHandler; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/ThreadGroup;->systemThreadGroup:Ljava/lang/ThreadGroup; (greylist, linking, allowed)
+Accessing hidden field Ljava/lang/Thread;->defaultUncaughtExceptionHandler:Ljava/lang/Thread$UncaughtExceptionHandler; (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->getNativeTid()I (blacklist, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->getUncaughtExceptionPreHandler()Ljava/lang/Thread$UncaughtExceptionHandler; (greylist,core-platform-api, linking, allowed)
+Accessing hidden field Ljava/lang/Thread;->uncaughtExceptionPreHandler:Ljava/lang/Thread$UncaughtExceptionHandler; (greylist, linking, allowed)
+Accessing hidden method Ljava/lang/Thread;->init(Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;J)V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->init(Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;JLjava/security/AccessControlContext;)V (blacklist, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->init(Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;JLjava/security/AccessControlContext;)V (blacklist, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->name:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Ljava/lang/ThreadGroup;->addUnstarted()V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->init2(Ljava/lang/Thread;)V (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->contextClassLoader:Ljava/lang/ClassLoader; (greylist, linking, allowed)
+Accessing hidden method Ljava/lang/ThreadLocal;->createInheritedMap(Ljava/lang/ThreadLocal$ThreadLocalMap;)Ljava/lang/ThreadLocal$ThreadLocalMap; (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->interrupt0()V (blacklist, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->isCCLOverridden(Ljava/lang/Class;)Z (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread$Caches;->subclassAuditsQueue:Ljava/lang/ref/ReferenceQueue; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread$Caches;->subclassAudits:Ljava/util/concurrent/ConcurrentMap; (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->processQueue(Ljava/lang/ref/ReferenceQueue;Ljava/util/concurrent/ConcurrentMap;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->nativeCreate(Ljava/lang/Thread;JZ)V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->nativeGetStatus(Z)I (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->nextThreadID()J (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->threadSeqNumber:J (greylist, linking, allowed)
+Accessing hidden method Ljava/lang/Thread;->nextThreadNum()I (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->threadInitNumber:I (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->threadInitNumber:I (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->processQueue(Ljava/lang/ref/ReferenceQueue;Ljava/util/concurrent/ConcurrentMap;)V (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->defaultUncaughtExceptionHandler:Ljava/lang/Thread$UncaughtExceptionHandler; (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->setNativeName(Ljava/lang/String;)V (blacklist, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->setPriority0(I)V (blacklist, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->setUncaughtExceptionPreHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V (greylist-max-o,core-platform-api, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->sleep(Ljava/lang/Object;JI)V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->sleep(Ljava/lang/Object;JI)V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->blockedOn(Lsun/nio/ch/Interruptible;)V (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->blockerLock:Ljava/lang/Object; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->blocker:Lsun/nio/ch/Interruptible; (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->dispatchUncaughtException(Ljava/lang/Throwable;)V (greylist, linking, allowed)
+Accessing hidden field Ljava/lang/Thread;->tid:J (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->priority:I (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/VMStack;->getThreadStackTrace(Ljava/lang/Thread;)[Ljava/lang/StackTraceElement; (greylist, linking, allowed)
+Accessing hidden field Llibcore/util/EmptyArray;->STACK_TRACE_ELEMENT:[Ljava/lang/StackTraceElement; (blacklist, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->started:Z (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->nativeGetStatus(Z)I (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->uncaughtExceptionHandler:Ljava/lang/Thread$UncaughtExceptionHandler; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->uncaughtExceptionHandler:Ljava/lang/Thread$UncaughtExceptionHandler; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->blockerLock:Ljava/lang/Object; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->blocker:Lsun/nio/ch/Interruptible; (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->interrupt0()V (blacklist, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->interrupt0()V (blacklist, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->nativePeer:J (greylist, linking, allowed)
+Accessing hidden method Ljava/lang/Thread;->setNativeName(Ljava/lang/String;)V (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/RuntimeHooks;->getThreadPrioritySetter()Ldalvik/system/ThreadPrioritySetter; (blacklist,core-platform-api, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->setSystemDaemon(Z)V (blacklist, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->systemDaemon:Z (blacklist, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->uncaughtExceptionHandler:Ljava/lang/Thread$UncaughtExceptionHandler; (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->started:Z (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/ThreadGroup;->add(Ljava/lang/Thread;)V (greylist, linking, allowed)
+Accessing hidden field Ljava/lang/Thread;->started:Z (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->stackSize:J (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/Thread;->nativeCreate(Ljava/lang/Thread;JZ)V (greylist-max-o, linking, denied)
+Accessing hidden field Ljava/lang/Thread;->started:Z (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/ThreadGroup;->threadStartFailed(Ljava/lang/Thread;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;-><init>(Ljava/lang/ClassLoader;Ljava/lang/String;)V (blacklist, linking, denied)
+Accessing hidden field Ldalvik/system/DexPathList;->definingContext:Ljava/lang/ClassLoader; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->splitPaths(Ljava/lang/String;Z)Ljava/util/List; (greylist, linking, allowed)
+Accessing hidden field Ldalvik/system/DexPathList;->nativeLibraryDirectories:Ljava/util/List; (greylist, linking, allowed)
+Accessing hidden field Ldalvik/system/DexPathList;->systemNativeLibraryDirectories:Ljava/util/List; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->getAllNativeLibraryDirectories()Ljava/util/List; (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;-><init>(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)V (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;-><init>(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Z)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;-><init>(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Z)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->splitDexPath(Ljava/lang/String;)Ljava/util/List; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->concat(Ljava/lang/Class;[Ljava/lang/Object;[Ljava/lang/Object;)[Ljava/lang/Object; (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->getAllNativeLibraryDirectories()Ljava/util/List; (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->lambda$initByteBufferDexPath$0(Ljava/nio/ByteBuffer;)Z (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->loadDexFile(Ljava/io/File;Ljava/io/File;Ljava/lang/ClassLoader;[Ldalvik/system/DexPathList$Element;)Ldalvik/system/DexFile; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexFile;-><init>(Ljava/io/File;Ljava/lang/ClassLoader;[Ldalvik/system/DexPathList$Element;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->optimizedPathFor(Ljava/io/File;Ljava/io/File;)Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->makeDexElements(Ljava/util/List;Ljava/io/File;Ljava/util/List;Ljava/lang/ClassLoader;)[Ldalvik/system/DexPathList$Element; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->makeDexElements(Ljava/util/List;Ljava/io/File;Ljava/util/List;Ljava/lang/ClassLoader;Z)[Ldalvik/system/DexPathList$Element; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->makeDexElements(Ljava/util/List;Ljava/io/File;Ljava/util/List;Ljava/lang/ClassLoader;Z)[Ldalvik/system/DexPathList$Element; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;-><init>(Ljava/io/File;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;-><init>(Ldalvik/system/DexFile;Ljava/io/File;)V (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexFile;->setTrusted()V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;-><init>(Ljava/io/File;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ljava/lang/System;->logE(Ljava/lang/String;Ljava/lang/Throwable;)V (greylist,core-platform-api, linking, allowed)
+Accessing hidden method Ljava/lang/System;->logW(Ljava/lang/String;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;-><init>(Ljava/io/File;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;-><init>(Ljava/io/File;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->makeInMemoryDexElements([Ljava/nio/ByteBuffer;Ljava/util/List;)[Ldalvik/system/DexPathList$Element; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexFile;-><init>([Ljava/nio/ByteBuffer;Ljava/lang/ClassLoader;[Ldalvik/system/DexPathList$Element;)V (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexFile;-><init>([Ljava/nio/ByteBuffer;Ljava/lang/ClassLoader;[Ldalvik/system/DexPathList$Element;)V (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->makePathElements(Ljava/util/List;Ljava/io/File;Ljava/util/List;)[Ldalvik/system/DexPathList$Element; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->makePathElements(Ljava/util/List;)[Ldalvik/system/DexPathList$NativeLibraryElement; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList$NativeLibraryElement;-><init>(Ljava/io/File;Ljava/lang/String;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$NativeLibraryElement;-><init>(Ljava/io/File;)V (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList$NativeLibraryElement;-><init>(Ljava/io/File;Ljava/lang/String;)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->optimizedPathFor(Ljava/io/File;Ljava/io/File;)Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->splitDexPath(Ljava/lang/String;)Ljava/util/List; (greylist-max-o, linking, denied)
+Accessing hidden field Llibcore/io/Libcore;->os:Llibcore/io/Os; (greylist, linking, allowed)
+Accessing hidden method Llibcore/io/Os;->stat(Ljava/lang/String;)Landroid/system/StructStat; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->addDexPath(Ljava/lang/String;Ljava/io/File;)V (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->addDexPath(Ljava/lang/String;Ljava/io/File;Z)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->addDexPath(Ljava/lang/String;Ljava/io/File;Z)V (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->splitDexPath(Ljava/lang/String;)Ljava/util/List; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->addNativePath(Ljava/util/Collection;)V (greylist, linking, allowed)
+Accessing hidden field Ldalvik/system/DexPathList;->nativeLibraryPathElements:[Ldalvik/system/DexPathList$NativeLibraryElement; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->findClass(Ljava/lang/String;Ljava/util/List;)Ljava/lang/Class; (greylist-max-o, linking, denied)
+Accessing hidden field Ldalvik/system/DexPathList;->dexElements:[Ldalvik/system/DexPathList$Element; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList$Element;->findClass(Ljava/lang/String;Ljava/lang/ClassLoader;Ljava/util/List;)Ljava/lang/Class; (greylist-max-o, linking, denied)
+Accessing hidden field Ldalvik/system/DexPathList;->dexElementsSuppressedExceptions:[Ljava/io/IOException; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/DexPathList;->findLibrary(Ljava/lang/String;)Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$NativeLibraryElement;->findNativeLibrary(Ljava/lang/String;)Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->findResource(Ljava/lang/String;)Ljava/net/URL; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;->findResource(Ljava/lang/String;)Ljava/net/URL; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->findResources(Ljava/lang/String;)Ljava/util/Enumeration; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;->findResource(Ljava/lang/String;)Ljava/net/URL; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->getDexPaths()Ljava/util/List; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList$Element;->access$000(Ldalvik/system/DexPathList$Element;)Ljava/lang/String; (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->getNativeLibraryDirectories()Ljava/util/List; (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->initByteBufferDexPath([Ljava/nio/ByteBuffer;)V (blacklist, linking, denied)
+Accessing hidden field Ldalvik/system/-$$Lambda$DexPathList$_CyMypnZmV6ArWiPOPB4EkAIeUc;->INSTANCE:Ldalvik/system/-$$Lambda$DexPathList$_CyMypnZmV6ArWiPOPB4EkAIeUc; (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexFile;-><init>([Ljava/nio/ByteBuffer;Ljava/lang/ClassLoader;[Ldalvik/system/DexPathList$Element;)V (blacklist, linking, denied)
+Accessing hidden method Ldalvik/system/DexPathList;->getAllNativeLibraryDirectories()Ljava/util/List; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;-><clinit>()V (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;-><init>(Landroid/app/ActivityThread;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/view/DisplayAdjustments;-><init>()V (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mDisplayAdjustments:Landroid/view/DisplayAdjustments; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mReceivers:Landroid/util/ArrayMap; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mUnregisteredReceivers:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mUnboundServices:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mActivityThread:Landroid/app/ActivityThread; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mApplicationInfo:Landroid/content/pm/ApplicationInfo; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mAppDir:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mResDir:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitAppDirs:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitResDirs:[Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitClassLoaderNames:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mOverlayDirs:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mDataDir:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mDataDirFile:Ljava/io/File; (greylist-max-p, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mDeviceProtectedDataDirFile:Ljava/io/File; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mCredentialProtectedDataDirFile:Ljava/io/File; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mLibDir:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mBaseClassLoader:Ljava/lang/ClassLoader; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mSecurityViolation:Z (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mIncludeCode:Z (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mRegisterPackage:Z (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mResources:Landroid/content/res/Resources; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mDefaultClassLoader:Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createAppFactory(Landroid/content/pm/ApplicationInfo;Ljava/lang/ClassLoader;)Landroid/app/AppComponentFactory; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;-><init>(Landroid/app/ActivityThread;Landroid/content/pm/ApplicationInfo;Landroid/content/res/CompatibilityInfo;Ljava/lang/ClassLoader;ZZZ)V (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mUnregisteredReceivers:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mUnboundServices:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->setApplicationInfo(Landroid/content/pm/ApplicationInfo;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->access$000(Landroid/app/LoadedApk;)[Ljava/lang/String; (blacklist, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitNames:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->access$100(Landroid/app/LoadedApk;Ljava/util/List;)V (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createOrUpdateClassLoaderLocked(Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->access$200(Landroid/app/LoadedApk;)Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mClassLoader:Ljava/lang/ClassLoader; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->access$300(Landroid/app/LoadedApk;)[Ljava/lang/String; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->access$400(Landroid/app/LoadedApk;)[Ljava/lang/String; (blacklist, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitAppDirs:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->access$500(Landroid/app/LoadedApk;)[Ljava/lang/String; (blacklist, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitClassLoaderNames:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->adjustNativeLibraryPaths(Landroid/content/pm/ApplicationInfo;)Landroid/content/pm/ApplicationInfo; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/content/pm/ApplicationInfo;->primaryCpuAbi:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/content/pm/ApplicationInfo;->secondaryCpuAbi:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Ldalvik/system/VMRuntime;->getRuntime()Ldalvik/system/VMRuntime; (greylist,core-platform-api, linking, allowed)
+Accessing hidden method Ldalvik/system/VMRuntime;->vmInstructionSet()Ljava/lang/String; (greylist,core-platform-api, linking, allowed)
+Accessing hidden method Ldalvik/system/VMRuntime;->getInstructionSet(Ljava/lang/String;)Ljava/lang/String; (greylist,core-platform-api, linking, allowed)
+Accessing hidden field Landroid/content/pm/ApplicationInfo;->secondaryNativeLibraryDir:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->allowThreadDiskReads()Landroid/os/StrictMode$ThreadPolicy; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->appendApkLibPathIfNeeded(Ljava/lang/String;Landroid/content/pm/ApplicationInfo;Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->appendSharedLibrariesLibPathsIfNeeded(Ljava/util/List;Landroid/content/pm/ApplicationInfo;Ljava/util/Set;Ljava/util/List;)V (blacklist, linking, denied)
+Accessing hidden method Landroid/content/pm/SharedLibraryInfo;->getAllCodePaths()Ljava/util/List; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->canAccessDataDir()Z (blacklist, linking, denied)
+Accessing hidden method Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->allowThreadDiskReads()Landroid/os/StrictMode$ThreadPolicy; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createAppFactory(Landroid/content/pm/ApplicationInfo;Ljava/lang/ClassLoader;)Landroid/app/AppComponentFactory; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mIncludeCode:Z (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I (greylist, linking, allowed)
+Accessing hidden field Landroid/app/AppComponentFactory;->DEFAULT:Landroid/app/AppComponentFactory; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createOrUpdateClassLoaderLocked(Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mDefaultClassLoader:Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mDefaultClassLoader:Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createAppFactory(Landroid/content/pm/ApplicationInfo;Ljava/lang/ClassLoader;)Landroid/app/AppComponentFactory; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mIncludeCode:Z (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/ActivityThread;->getPackageManager()Landroid/content/pm/IPackageManager; (greylist, linking, allowed)
+Accessing hidden method Landroid/content/pm/IPackageManager;->notifyPackageUse(Ljava/lang/String;I)V (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mRegisterPackage:Z (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/ActivityManager;->getService()Landroid/app/IActivityManager; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/IActivityManager;->addPackageDependency(Ljava/lang/String;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/content/pm/ApplicationInfo;->isSystemApp()Z (blacklist,test-api, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mDefaultClassLoader:Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createSharedLibrariesLoaders(Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;)Ljava/util/List; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createSharedLibraryLoader(Landroid/content/pm/SharedLibraryInfo;ZLjava/lang/String;Ljava/lang/String;)Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getLibrariesFor(Ljava/lang/String;)[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/content/pm/IPackageManager;->getApplicationInfo(Ljava/lang/String;II)Landroid/content/pm/ApplicationInfo; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getServiceDispatcherCommon(Landroid/content/ServiceConnection;Landroid/content/Context;Landroid/os/Handler;Ljava/util/concurrent/Executor;I)Landroid/app/IServiceConnection; (blacklist, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ServiceDispatcher;-><init>(Landroid/content/ServiceConnection;Landroid/content/Context;Ljava/util/concurrent/Executor;I)V (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ServiceDispatcher;-><init>(Landroid/content/ServiceConnection;Landroid/content/Context;Landroid/os/Handler;I)V (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ServiceDispatcher;->getIServiceConnection()Landroid/app/IServiceConnection; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk$ServiceDispatcher;->validate(Landroid/content/Context;Landroid/os/Handler;Ljava/util/concurrent/Executor;)V (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->initializeJavaContextClassLoader()V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/content/pm/PackageManager;->getPackageInfoAsUserCached(Ljava/lang/String;II)Landroid/content/pm/PackageInfo; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->makePaths(Landroid/app/ActivityThread;Landroid/content/pm/ApplicationInfo;Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->makePaths(Landroid/app/ActivityThread;ZLandroid/content/pm/ApplicationInfo;Ljava/util/List;Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->makePaths(Landroid/app/ActivityThread;ZLandroid/content/pm/ApplicationInfo;Ljava/util/List;Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/content/pm/ApplicationInfo;->requestsIsolatedSplitLoading()Z (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentationPackageName:Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentationAppDir:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentationSplitAppDirs:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentationLibDir:Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentedAppDir:Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentedSplitAppDirs:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentedLibDir:Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/content/pm/ApplicationInfo;->requestsIsolatedSplitLoading()Z (greylist-max-o, linking, denied)
+Accessing hidden method Ldalvik/system/VMRuntime;->is64BitAbi(Ljava/lang/String;)Z (greylist,core-platform-api, linking, allowed)
+Accessing hidden field Landroid/content/pm/ApplicationInfo;->sharedLibraryInfos:Ljava/util/List; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->appendSharedLibrariesLibPathsIfNeeded(Ljava/util/List;Landroid/content/pm/ApplicationInfo;Ljava/util/Set;Ljava/util/List;)V (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->setApplicationInfo(Landroid/content/pm/ApplicationInfo;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->adjustNativeLibraryPaths(Landroid/content/pm/ApplicationInfo;)Landroid/content/pm/ApplicationInfo; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->setThreadPolicy(Landroid/os/StrictMode$ThreadPolicy;)V (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->setupJitProfileSupport()V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/DexLoadReporter;->getInstance()Landroid/app/DexLoadReporter; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createSharedLibraryLoader(Landroid/content/pm/SharedLibraryInfo;ZLjava/lang/String;Ljava/lang/String;)Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden method Landroid/content/pm/SharedLibraryInfo;->getAllCodePaths()Ljava/util/List; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->forgetReceiverDispatcher(Landroid/content/Context;Landroid/content/BroadcastReceiver;)Landroid/content/IIntentReceiver; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mUnregisteredReceivers:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mUnregisteredReceivers:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ReceiverDispatcher;->setUnregisterLocation(Ljava/lang/RuntimeException;)V (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk$ReceiverDispatcher;->mForgotten:Z (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mUnregisteredReceivers:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ReceiverDispatcher;->getUnregisterLocation()Ljava/lang/RuntimeException; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->forgetServiceDispatcher(Landroid/content/Context;Landroid/content/ServiceConnection;)Landroid/app/IServiceConnection; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ServiceDispatcher;->doForget()V (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mUnboundServices:Landroid/util/ArrayMap; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ServiceDispatcher;->getUnbindLocation()Ljava/lang/RuntimeException; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getAppDir()Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getAppFactory()Landroid/app/AppComponentFactory; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mAppComponentFactory:Landroid/app/AppComponentFactory; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getApplication()Landroid/app/Application; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mApplication:Landroid/app/Application; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getApplicationInfo()Landroid/content/pm/ApplicationInfo; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getAssets()Landroid/content/res/AssetManager; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getResources()Landroid/content/res/Resources; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getClassLoader()Ljava/lang/ClassLoader; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->createOrUpdateClassLoaderLocked(Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo; (greylist, linking, allowed)
+Accessing hidden method Landroid/view/DisplayAdjustments;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getCredentialProtectedDataDirFile()Ljava/io/File; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mCredentialProtectedDataDirFile:Ljava/io/File; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getDataDir()Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getDataDirFile()Ljava/io/File; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mDataDirFile:Ljava/io/File; (greylist-max-p, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getDeviceProtectedDataDirFile()Ljava/io/File; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mDeviceProtectedDataDirFile:Ljava/io/File; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getLibDir()Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getOverlayDirs()[Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mOverlayDirs:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getPackageName()Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getReceiverDispatcher(Landroid/content/BroadcastReceiver;Landroid/content/Context;Landroid/os/Handler;Landroid/app/Instrumentation;Z)Landroid/content/IIntentReceiver; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ReceiverDispatcher;-><init>(Landroid/content/BroadcastReceiver;Landroid/content/Context;Landroid/os/Handler;Landroid/app/Instrumentation;Z)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$ReceiverDispatcher;->validate(Landroid/content/Context;Landroid/os/Handler;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getResDir()Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getSplitPaths(Ljava/lang/String;)[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getServiceDispatcher(Landroid/content/ServiceConnection;Landroid/content/Context;Landroid/os/Handler;I)Landroid/app/IServiceConnection; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getServiceDispatcherCommon(Landroid/content/ServiceConnection;Landroid/content/Context;Landroid/os/Handler;Ljava/util/concurrent/Executor;I)Landroid/app/IServiceConnection; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getServiceDispatcher(Landroid/content/ServiceConnection;Landroid/content/Context;Ljava/util/concurrent/Executor;I)Landroid/app/IServiceConnection; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getServiceDispatcherCommon(Landroid/content/ServiceConnection;Landroid/content/Context;Landroid/os/Handler;Ljava/util/concurrent/Executor;I)Landroid/app/IServiceConnection; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getSplitAppDirs()[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitAppDirs:[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getSplitClassLoader(Ljava/lang/String;)Ljava/lang/ClassLoader; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitLoader:Landroid/app/LoadedApk$SplitDependencyLoaderImpl; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$SplitDependencyLoaderImpl;->getClassLoaderForSplit(Ljava/lang/String;)Ljava/lang/ClassLoader; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getSplitPaths(Ljava/lang/String;)[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSplitLoader:Landroid/app/LoadedApk$SplitDependencyLoaderImpl; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk$SplitDependencyLoaderImpl;->getSplitPathsForSplit(Ljava/lang/String;)[Ljava/lang/String; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->getSplitResDirs()[Ljava/lang/String; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->getTargetSdkVersion()I (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->installSystemApplicationInfo(Landroid/content/pm/ApplicationInfo;Ljava/lang/ClassLoader;)V (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mDefaultClassLoader:Ljava/lang/ClassLoader; (blacklist, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->createAppFactory(Landroid/content/pm/ApplicationInfo;Ljava/lang/ClassLoader;)Landroid/app/AppComponentFactory; (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->isSecurityViolation()Z (greylist-max-o, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mSecurityViolation:Z (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->lookupServiceDispatcher(Landroid/content/ServiceConnection;Landroid/content/Context;)Landroid/app/IServiceConnection; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden field Landroid/app/LoadedApk;->mServices:Landroid/util/ArrayMap; (greylist-max-p, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->makeApplication(ZLandroid/app/Instrumentation;)Landroid/app/Application; (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->initializeJavaContextClassLoader()V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/content/res/AssetManager;->getAssignedPackageIdentifiers(ZZ)Landroid/util/SparseArray; (blacklist, linking, denied)
+Accessing hidden field Landroid/app/ActivityThread;->mInstrumentation:Landroid/app/Instrumentation; (greylist, linking, allowed)
+Accessing hidden field Landroid/app/ActivityThread;->mAllApplications:Ljava/util/ArrayList; (greylist, linking, allowed)
+Accessing hidden method Landroid/os/Trace;->traceEnd(J)V (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->removeContextRegistrations(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/os/StrictMode;->vmRegistrationLeaksEnabled()Z (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->setCompatibilityInfo(Landroid/content/res/CompatibilityInfo;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/view/DisplayAdjustments;->setCompatibilityInfo(Landroid/content/res/CompatibilityInfo;)V (greylist, linking, allowed)
+Accessing hidden method Landroid/app/LoadedApk;->updateApplicationInfo(Landroid/content/pm/ApplicationInfo;Ljava/util/List;)V (greylist-max-o, linking, denied)
+Accessing hidden method Landroid/app/LoadedApk;->setApplicationInfo(Landroid/content/pm/ApplicationInfo;)V (greylist-max-o, linking, denied)
+Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
+Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
+No Network Security Config specified, using platform default
+No Network Security Config specified, using platform default
+Checking for metadata for AppLocalesMetadataHolderService : Service not found
+Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (greylist, reflection, allowed)
+Skipped 36 frames!  The application may be doing too much work on its main thread.
+[File] : hardware/rockchip/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1311; [Func] : base_context_deal_with_version_affairs_rk_ext;
+arm_release_ver of this mali_so is 'g2p0-01eac0', rk_so_ver is '8@0 '.
+[File] : hardware/rockchip/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1327; [Func] : base_context_deal_with_version_affairs_rk_ext;
+arm_release_vers are match. to set the full mali_ver 'g2p0-01eac0-x-8@0' as value of 'sys.gmali.version'.
+type=1400 audit(0.0:9850): avc: denied { write } for name="property_service" dev="tmpfs" ino=835 scontext=u:r:untrusted_app:s0:c124,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=1 app=com.example.test1
+type=1400 audit(0.0:9851): avc: denied { connectto } for path="/dev/socket/property_service" scontext=u:r:untrusted_app:s0:c124,c256,c512,c768 tcontext=u:r:init:s0 tclass=unix_stream_socket permissive=1 app=com.example.test1
+Davey! duration=808ms; Flags=1, IntendedVsync=30831082277629, Vsync=30831682277605, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=30831692886680, AnimationStart=30831692898930, PerformTraversalsStart=30831693350430, DrawStart=30831805142191, SyncQueued=30831848022445, SyncStart=30831848402779, IssueDrawCommandsStart=30831848523821, SwapBuffers=30831862651572, FrameCompleted=30831890821033, DequeueBufferDuration=413292, QueueBufferDuration=705541, GpuCompleted=377957122122, 
+A resource failed to call close. 
+type=1400 audit(0.0:9852): avc: denied { read write } for name="bluetoothcts" dev="tmpfs" ino=11652 scontext=u:r:untrusted_app:s0:c124,c256,c512,c768 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1 app=com.example.test1
+Lib_ComOpen ucPortNo = 4 com = /dev/ttyS1 
+com_path /dev/ttyS1
+Lib_UartInit(com_fd[4]) [48]
+type=1400 audit(0.0:9854): avc: denied { read write } for name="ttyS1" dev="tmpfs" ino=891 scontext=u:r:untrusted_app:s0:c124,c256,c512,c768 tcontext=u:object_r:serial_device:s0 tclass=chr_file permissive=1 app=com.example.test1
+COMX = /dev/ttyS1 baudrate = 115200, data_bits = 8, parity = N, stop_bits = 1
+Send Length: 15, Data: AT+OBSERVER=0
+Recv Length: 467, Data: ''??'LM?9F:06,RSSI:-57,ADV:1EFF060001092022722FE41715E37E7CB26F70BBA495FFF71341D83681C2FD
+MAC:5E:60:BA:25:1A:BF,RSSI:-92,ADV:0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003
+MAC:D8:BC:38:43:9F:3A,RSSI:-91,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-88,RSP:020A0511094456325F443842433338343339463341
+MAC:79:F2:0B:02:39:B9,RSSI:-85,ADV:0201021BFF7500021841A19632CBE55F932AB09C9BFE51F68B8C9B6C71E8E1
+OK
+Send Length: 9, Data: AT+EXIT
+Recv Length: 4, Data: OK
+Send Length: 3, Data: +++
+Recv Length: 4, Data: OK
+Send Length: 10, Data: AT+ROLE?
+Recv Length: 15, Data: AT+ROLE=1
+OK
+Master mode updated successfully, Result: 0
+Step1: 0
+Send Length: 12, Data: AT+VERSION
+Recv Length: 45, Data: AT+VERSION=RF_BM_BG22A3_V0.3.3_2022.7.6
+OK
+Send Length: 9, Data: AT+MAC?
+Recv Length: 30, Data: AT+MAC=00:3C:84:2A:C8:6B
+OK
+mac: 00:3C:84:2A:C8:6B
+Button 1 clicked
+Installing profile for com.example.test1
+Send Length: 10, Data: AT+ROLE?
+Recv Length: 15, Data: AT+ROLE=1
+OK
+SENDING...cmd=1,0,,,0,,
+SENDING...at cmd=AT+OBSERVER=1,0,,,0,,
+Send Length: 23, Data: AT+OBSERVER=1,0,,,0,,
+BLE Scan Started with result: 0
+Step2: 0
+Button 2 clicked
+Scanning started
+Button 3 clicked
+ComRecvAT 시작
+runLib_ComRecvAT: recvDataLen 1000
+Lib_ComRecvAT recvData: 4F4B0D0A4D41433A37383A32443A41413A32313A34323A44462C525353493A2D37322C4144563A30383039364436333631364536343643363530323041463930333033333431323045313633343132364436333631364536343643363532453634363537360D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39332C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D39302C4144563A3131303743464346434643464346434643464346383639453846393039453934394539340D0A4D41433A34363A34463A43453A43433A31433A42352C525353493A2D37302C4144563A30383039364436333631364536343643363530353033333431323637343530353136333431323433343830363136363734353444343334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38372C4144563A30434646303030303534353336443532363434413631363137433131303746433944443042334342383445303834303634324633463745314530424643420D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38382C5253503A31424646303030304246454342384145433146443546363536323333333737433335333033343336363136353636333133353333333333320D0A4D41433A44383A41333A35433A37343A30433A36392C525353493A2D38342C4144563A31424646373530303432303430313830363644384133354337343043363944414133354337343043363830313038303030303030303030300D0A4D41433A35353A44313A31433A33463A42343A34442C525353493A2D36332C4144563A303230313141303230413037304146463443303031303035303331384330383733360D0A4D41433A31423A45383A46363A30353A39463A30362C525353493A2D34332C4144563A31454646303630303031303932303232373232464534313731354533374537434232364637304242413439354646463731333431443833363831433246440D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D39332C4144563A30323031303631393136463746443031453246333231354236374541353336343930413545393544383033
+Lib_ComRecvAT buff: OK
+MAC:78:2D:AA:21:42:DF,RSSI:-72,ADV:08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576
+MAC:D8:BC:38:43:9F:3A,RSSI:-93,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:63:FF:46:07:B7:B2,RSSI:-90,ADV:1107CFCFCFCFCFCFCFCF869E8F909E949E94
+MAC:46:4F:CE:CC:1C:B5,RSSI:-70,ADV:08096D63616E646C65050334126745051634124348061667454D4341
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:5C:22:DA:2A:EB:38,RSSI:-87,ADV:0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB
+MAC:5C:22:DA:2A:EB:38,RSSI:-88,RSP:1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332
+MAC:D8:A3:5C:74:0C:69,RSSI:-84,ADV:1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000
+MAC:55:D1:1C:3F:B4:4D,RSSI:-63,ADV:02011A020A070AFF4C0010050318C08736
+MAC:1B:E8:F6:05:9F:06,RSSI:-43,ADV:1EFF060001092022722FE41715E37E7CB26F70BBA495FFF71341D83681C2FD
+MAC:5E:60:BA:25:1A:BF,RSSI:-93,ADV:0201061916F7FD01E2F3215B67EA536490A5E95D803
+runLib_ComRecvAT: recvDataLen 1000
+Lib_ComRecvAT recvData: 4139314543303030303030303030330D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38342C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A37393A46323A30423A30323A33393A42392C525353493A2D38342C4144563A30323031303231424646373530303032313834314131393633324342453535463933324142303943394246453531463638423843394236433731453845310D0A4D41433A37393A46323A30423A30323A33393A42392C525353493A2D38322C5253503A30394646373530303430393139453043433031350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38362C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38392C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A37433A30443A35423A41373A42463A41432C525353493A2D36332C4144563A30333033463346450D0A4D41433A37433A30443A35423A41373A42463A41432C525353493A2D36332C5253503A31453136463346453441313732333332353634423339313133323646363436364638314637373438363232424443313046344243304245453631393634320D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39332C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39332C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A31423A45383A46363A30353A39463A30362C525353493A2D35372C4144563A31454646303630303031303932303232373232464534313731354533374537434232364637304242413439354646463731333431443833363831433246440D0A4D41433A35433A46443A37363A37
+Lib_ComRecvAT buff: A91EC0000000003
+MAC:D8:BC:38:43:9F:3A,RSSI:-84,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:79:F2:0B:02:39:B9,RSSI:-84,ADV:0201021BFF7500021841A19632CBE55F932AB09C9BFE51F68B8C9B6C71E8E1
+MAC:79:F2:0B:02:39:B9,RSSI:-82,RSP:09FF750040919E0CC015
+MAC:D8:BC:38:43:9F:3A,RSSI:-86,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:5E:60:BA:25:1A:BF,RSSI:-89,ADV:0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003
+MAC:7C:0D:5B:A7:BF:AC,RSSI:-63,ADV:0303F3FE
+MAC:7C:0D:5B:A7:BF:AC,RSSI:-63,RSP:1E16F3FE4A172332564B3911326F6466F81F7748622BDC10F4BC0BEE619642
+MAC:D8:BC:38:43:9F:3A,RSSI:-93,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-93,RSP:020A0511094456325F443842433338343339463341
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:1B:E8:F6:05:9F:06,RSSI:-57,ADV:1EFF060001092022722FE41715E37E7CB26F70BBA495FFF71341D83681C2FD
+MAC:5C:FD:76:7
+runLib_ComRecvAT: recvDataLen 1000
+Lib_ComRecvAT recvData: 363A37463A37422C525353493A2D39372C4144563A3032303131413032304130433042464634433030313030363341314530423045423441410D0A4D41433A37393A46323A30423A30323A33393A42392C525353493A2D38362C4144563A30323031303231424646373530303032313834314131393633324342453535463933324142303943394246453531463638423843394236433731453845310D0A4D41433A37393A46323A30423A30323A33393A42392C525353493A2D38332C5253503A30394646373530303430393139453043433031350D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D39312C4144563A30434646303030303534353336443532363434413631363137433131303746433944443042334342383445303834303634324633463745314530424643420D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D39302C5253503A31424646303030304246454342384145433146443546363536323333333737433335333033343336363136353636333133353333333333320D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39332C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A45313A41303A35393A32333A44463A41332C525353493A2D36372C4144563A3141464634433030313230323634303130373131303630443936423939363332463936423943344245364335363146384432323741350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38362C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38362C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A35353A44313A31433A33463A42343A34442C525353493A2D36342C4144563A303230313141303230413037304146463443303031303035303331384330383733360D0A4D41433A37343A31393A30413A32333A31373A31422C525353493A2D39362C4144563A3032303130323133464637353030303130303032
+Lib_ComRecvAT buff: 6:7F:7B,RSSI:-97,ADV:02011A020A0C0BFF4C0010063A1E0B0EB4AA
+MAC:79:F2:0B:02:39:B9,RSSI:-86,ADV:0201021BFF7500021841A19632CBE55F932AB09C9BFE51F68B8C9B6C71E8E1
+MAC:79:F2:0B:02:39:B9,RSSI:-83,RSP:09FF750040919E0CC015
+MAC:5C:22:DA:2A:EB:38,RSSI:-91,ADV:0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB
+MAC:5C:22:DA:2A:EB:38,RSSI:-90,RSP:1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332
+MAC:D8:BC:38:43:9F:3A,RSSI:-93,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:E1:A0:59:23:DF:A3,RSSI:-67,ADV:1AFF4C00120264010711060D96B99632F96B9C4BE6C561F8D227A5
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-86,RSP:020A0511094456325F443842433338343339463341
+MAC:D8:BC:38:43:9F:3A,RSSI:-86,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:55:D1:1C:3F:B4:4D,RSSI:-64,ADV:02011A020A070AFF4C0010050318C08736
+MAC:74:19:0A:23:17:1B,RSSI:-96,ADV:02010213FF7500010002
+runLib_ComRecvAT: recvDataLen 1000
+Lib_ComRecvAT recvData: 303030313032464630303030343332393032304132333137314230333033304431380D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39322C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38392C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D39302C5253503A303330333738464530364646363530303031433930350D0A4D41433A37393A46323A30423A30323A33393A42392C525353493A2D38342C4144563A30323031303231424646373530303032313834314131393633324342453535463933324142303943394246453531463638423843394236433731453845310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38362C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A37443A35393A35453A31453A37363A35332C525353493A2D38342C4144563A30333033463346450D0A4D41433A37443A35393A35453A31453A37363A35332C525353493A2D38342C5253503A31453136463346453441313732333439353533313335313133324332344435423630304644324337313139373331423235443242413542423843453337450D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39342C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A35383A32393A38443A
+Lib_ComRecvAT buff: 000102FF00004329020A23171B03030D18
+MAC:D8:BC:38:43:9F:3A,RSSI:-92,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:5E:60:BA:25:1A:BF,RSSI:-89,ADV:0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003
+MAC:5E:60:BA:25:1A:BF,RSSI:-90,RSP:030378FE06FF650001C905
+MAC:79:F2:0B:02:39:B9,RSSI:-84,ADV:0201021BFF7500021841A19632CBE55F932AB09C9BFE51F68B8C9B6C71E8E1
+MAC:D8:BC:38:43:9F:3A,RSSI:-87,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,RSP:020A0511094456325F443842433338343339463341
+MAC:D8:BC:38:43:9F:3A,RSSI:-86,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,RSP:020A0511094456325F443842433338343339463341
+MAC:7D:59:5E:1E:76:53,RSSI:-84,ADV:0303F3FE
+MAC:7D:59:5E:1E:76:53,RSSI:-84,RSP:1E16F3FE4A1723495531351132C24D5B600FD2C7119731B25D2BA5BB8CE37E
+MAC:D8:BC:38:43:9F:3A,RSSI:-94,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:58:29:8D:
+runLib_ComRecvAT: recvDataLen 1000
+Lib_ComRecvAT recvData: 34393A30443A43332C525353493A2D37382C4144563A3038303936443633363136453634364336353035303537383536323430310D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D39322C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A44383A41333A35433A37343A30433A36392C525353493A2D38362C4144563A31424646373530303432303430313830363644384133354337343043363944414133354337343043363830313038303030303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38372C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38372C4144563A30434646303030303534353336443532363434413631363137433131303746433944443042334342383445303834303634324633463745314530424643420D0A4D41433A35433A32323A44413A32413A45423A33382C525353493A2D38372C5253503A31424646303030304246454342384145433146443546363536323333333737433335333033343336363136353636333133353333333333320D0A4D41433A34363A34463A43453A43433A31433A42352C525353493A2D37332C4144563A30383039364436333631364536343643363530353033333431323637343530353136333431323433343830363136363734353444343334310D0A4D41433A35383A32333A30413A32413A44423A31312C525353493A2D37302C4144563A30393136463346453131303139383837323344440D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39322C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D39322C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A37393A46323A30423A30323A33393A42392C525353493A2D38362C4144563A3032303130
+Lib_ComRecvAT buff: 49:0D:C3,RSSI:-78,ADV:08096D63616E646C65050578562401
+MAC:5E:60:BA:25:1A:BF,RSSI:-92,ADV:0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003
+MAC:D8:A3:5C:74:0C:69,RSSI:-86,ADV:1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-87,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:5C:22:DA:2A:EB:38,RSSI:-87,ADV:0CFF000054536D52644A61617C1107FC9DD0B3CB84E0840642F3F7E1E0BFCB
+MAC:5C:22:DA:2A:EB:38,RSSI:-87,RSP:1BFF0000BFECB8AEC1FD5F656233377C353034366165663135333332
+MAC:46:4F:CE:CC:1C:B5,RSSI:-73,ADV:08096D63616E646C65050334126745051634124348061667454D4341
+MAC:58:23:0A:2A:DB:11,RSSI:-70,ADV:0916F3FE1101988723DD
+MAC:D8:BC:38:43:9F:3A,RSSI:-92,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-92,RSP:020A0511094456325F443842433338343339463341
+MAC:79:F2:0B:02:39:B9,RSSI:-86,ADV:02010
+runLib_ComRecvAT: recvDataLen 1000
+Lib_ComRecvAT recvData: 3231424646373530303032313834314131393633324342453535463933324142303943394246453531463638423843394236433731453845310D0A4D41433A37393A46323A30423A30323A33393A42392C525353493A2D38332C5253503A30394646373530303430393139453043433031350D0A4D41433A31423A45383A46363A30353A39463A30362C525353493A2D35362C4144563A31454646303630303031303932303232373232464534313731354533374537434232364637304242413439354646463731333431443833363831433246440D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38342C4144563A303230313036313931364637464430314532463332313542363745413533363439304135453935443830334139314543303030303030303030330D0A4D41433A35453A36303A42413A32353A31413A42462C525353493A2D38342C5253503A303330333738464530364646363530303031433930350D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38362C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A35353A44313A31433A33463A42343A34442C525353493A2D36322C4144563A303230313141303230413037304146463443303031303035303331384330383733360D0A4D41433A36333A46463A34363A30373A42373A42322C525353493A2D39332C4144563A3131303743464346434643464346434643464346383639453846393039453934394539340D0A4D41433A35383A32333A30413A32413A44423A31312C525353493A2D37312C4144563A30393136463346453131303139383837323344440D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38342C4144563A30323031303631313036314243354435413530323030414139444533313132414632313031394141303630394646303232353030383930303030303030300D0A4D41433A44383A42433A33383A34333A39463A33412C525353493A2D38352C5253503A3032304130353131303934343536333235463434333834323433333333383334333333393436333334310D0A4D41433A31423A45383A46363A30353A39463A30362C525353493A2D35372C4144563A314546463036303030313039323032323732324645343137313545333745374342323646373042
+Lib_ComRecvAT buff: 21BFF7500021841A19632CBE55F932AB09C9BFE51F68B8C9B6C71E8E1
+MAC:79:F2:0B:02:39:B9,RSSI:-83,RSP:09FF750040919E0CC015
+MAC:1B:E8:F6:05:9F:06,RSSI:-56,ADV:1EFF060001092022722FE41715E37E7CB26F70BBA495FFF71341D83681C2FD
+MAC:5E:60:BA:25:1A:BF,RSSI:-84,ADV:0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003
+MAC:5E:60:BA:25:1A:BF,RSSI:-84,RSP:030378FE06FF650001C905
+MAC:D8:BC:38:43:9F:3A,RSSI:-86,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,RSP:020A0511094456325F443842433338343339463341
+MAC:55:D1:1C:3F:B4:4D,RSSI:-62,ADV:02011A020A070AFF4C0010050318C08736
+MAC:63:FF:46:07:B7:B2,RSSI:-93,ADV:1107CFCFCFCFCFCFCFCF869E8F909E949E94
+MAC:58:23:0A:2A:DB:11,RSSI:-71,ADV:0916F3FE1101988723DD
+MAC:D8:BC:38:43:9F:3A,RSSI:-84,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,RSP:020A0511094456325F443842433338343339463341
+MAC:1B:E8:F6:05:9F:06,RSSI:-57,ADV:1EFF060001092022722FE41715E37E7CB26F70B
+Send Length: 10, Data: AT+ROLE?
+Recv Length: 240, Data: MAC:5E:60:BA:25:1A:BF,RSSI:-84,ADV:0201061916F7FD01E2F3215B67EA536490A5E95D803A91EC0000000003
+MAC:5E:60:BA:25:1A:BF,RSSI:-83,RSP:030378FE06FF650001C905
+MAC:55:D1:1C:3F:B4:4D,RSSI:-63,ADV:02011A020A070AFF4C0010050318C08736
+AT+ROLE=1
+OK
+SENDING...
+Send Length: 15, Data: AT+OBSERVER=0
+RECEIVING...
+Recv Length: 597, Data: MAC:D8:BC:38:43:9F:3A,RSSI:-85,ADV:02010611061BC5D5A50200AA9DE3112AF21019AA0609FF0225008900000000
+MAC:D8:BC:38:43:9F:3A,RSSI:-85,RSP:020A0511094456325F443842433338343339463341
+MAC:6F:8F:72:DD:49:8F,RSSI:-74,ADV:0201021BFF7500021841A1B5B3C9E45F9C13AABB9EDABE52F38ECBD5747900
+MAC:6F:8F:72:DD:49:8F,RSSI:-74,RSP:09FF7500068674A7AE6B
+MAC:58:29:8D:49:0D:C3,RSSI:-77,ADV:08096D63616E646C65050578562401
+MAC:D8:A3:5C:74:0C:69,RSSI:-86,ADV:1BFF75004204018066D8A35C740C69DAA35C740C6801080000000000
+MAC:78:2D:AA:21:42:DF,RSSI:-77,ADV:08096D63616E646C65020AF9030334120E1634126D63616E646C652E646576
+OK
+BLE scan stopped
+Scanning stopped
+Button 3 clicked
