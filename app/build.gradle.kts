@@ -16,9 +16,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        ndk {
-            abiFilters += listOf("armeabi-v7a", "arm64-v8a","x86", "x86_64") // ✅ ARM 기반으로 강제
-        }
+        // NDK 설정 제거 - 순수 Kotlin 구현이므로 불필요
+        // ndk {
+        //     abiFilters += listOf("armeabi-v7a", "arm64-v8a","x86", "x86_64")
+        // }
     }
 
     buildTypes {
