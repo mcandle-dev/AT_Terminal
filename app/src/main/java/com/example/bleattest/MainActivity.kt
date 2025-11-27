@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
     }
 
     private fun setupAtCommandManager() {
-        atCommandManager = AtCommandManager()
+        atCommandManager = AtCommandManager(this)
         atCommandManager.setOnAtResponseListener(object : AtCommandManager.OnAtResponseListener {
             override fun onResponse(response: String) {
                 val logType = when {
@@ -87,8 +87,37 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
             }
         })
 
-        // Don't start receiving automatically - will start after first command
-        addLogToTerminal("Ready. Please initialize with 'Enable Master' first.", LogType.INFO)
+        // Show available USB devices
+        val availableDevices = atCommandManager.getAvailableDevices()
+        if (availableDevices.isNotEmpty()) {
+            addLogToTerminal("Available USB devices:", LogType.INFO)
+            availableDevices.forEach { device ->
+                addLogToTerminal("  - $device", LogType.INFO)
+            }
+        }
+
+        // Initialize USB serial port
+        val baudrate = 115200
+        val ret = atCommandManager.initUsbSerial(baudrate)
+
+        when (ret) {
+            0 -> {
+                addLogToTerminal("USB serial port opened @ $baudrate baud", LogType.INFO)
+                addLogToTerminal("Ready. Please initialize with 'Enable Master' first.", LogType.INFO)
+            }
+            -1 -> {
+                addLogToTerminal("No USB serial devices found", LogType.ERROR)
+                addLogToTerminal("Please connect USB device", LogType.ERROR)
+            }
+            -2 -> {
+                addLogToTerminal("USB permission required", LogType.ERROR)
+                addLogToTerminal("Please grant USB permission and restart app", LogType.ERROR)
+            }
+            else -> {
+                addLogToTerminal("Failed to open USB serial port (code: $ret)", LogType.ERROR)
+                addLogToTerminal("Please check USB connection", LogType.ERROR)
+            }
+        }
     }
 
     private fun setupButtonListeners() {
@@ -267,6 +296,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
                 atCommandManager.stopScan()
             }
         }
-        Log.d(TAG, "Activity destroyed")
+        atCommandManager.closeUsbSerial()
+        Log.d(TAG, "Activity destroyed, USB serial port closed")
     }
 }
