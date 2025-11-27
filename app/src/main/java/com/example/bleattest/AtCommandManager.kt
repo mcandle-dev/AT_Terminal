@@ -1,12 +1,11 @@
 package com.example.bleattest
 
-import android.content.Context
 import android.util.Log
 import com.example.bleattest.models.AtCommandResult
 import com.example.bleattest.models.ScanParams
 import kotlinx.coroutines.*
 
-class AtCommandManager(context: Context) {
+class AtCommandManager {
     companion object {
         private const val TAG = "AtCommandManager"
         private const val BUFFER_SIZE = 4096
@@ -16,7 +15,7 @@ class AtCommandManager(context: Context) {
     var isScanning: Boolean = false
         private set
 
-    private val usbSerialManager = UsbSerialManager(context)
+    private val serialPortManager = SerialPortManager()
     private var receiveJob: Job? = null
     private var listener: OnAtResponseListener? = null
     private var consecutiveErrors = 0
@@ -32,38 +31,20 @@ class AtCommandManager(context: Context) {
     }
 
     /**
-     * Initialize USB serial port connection
+     * Initialize serial port connection
+     * @param devicePath Serial device path (e.g. "/dev/ttyS0", "/dev/ttyS1")
      * @param baudrate Baud rate (default: 115200)
      * @return 0: success, negative: failed
      */
-    fun initUsbSerial(baudrate: Int = 115200): Int {
-        return usbSerialManager.open(baudrate)
+    fun initSerialPort(devicePath: String = "/dev/ttyS0", baudrate: Int = 115200): Int {
+        return serialPortManager.open(devicePath, baudrate)
     }
 
     /**
-     * Initialize USB serial port by VID/PID
-     * @param vendorId Vendor ID
-     * @param productId Product ID
-     * @param baudrate Baud rate (default: 115200)
-     * @return 0: success, negative: failed
+     * Close serial port connection
      */
-    fun initUsbSerialByVidPid(vendorId: Int, productId: Int, baudrate: Int = 115200): Int {
-        return usbSerialManager.openByVidPid(vendorId, productId, baudrate)
-    }
-
-    /**
-     * Close USB serial port connection
-     */
-    fun closeUsbSerial() {
-        usbSerialManager.close()
-        usbSerialManager.cleanup()
-    }
-
-    /**
-     * Get available USB devices
-     */
-    fun getAvailableDevices(): List<String> {
-        return usbSerialManager.getAvailableDevices()
+    fun closeSerialPort() {
+        serialPortManager.close()
     }
 
     /**
@@ -79,7 +60,7 @@ class AtCommandManager(context: Context) {
         }
 
         val bytes = finalCommand.toByteArray()
-        val ret = usbSerialManager.send(bytes, bytes.size)
+        val ret = serialPortManager.send(bytes, bytes.size)
 
         if (ret != 0) {
             Log.e(TAG, "Failed to send AT command: $command, ret=$ret")
@@ -98,7 +79,7 @@ class AtCommandManager(context: Context) {
         val buffer = ByteArray(BUFFER_SIZE)
         val lengthArray = intArrayOf(0)
         val timeout = 1000 // 1초 타임아웃
-        val ret = usbSerialManager.receive(buffer, lengthArray, BUFFER_SIZE, timeout)
+        val ret = serialPortManager.receive(buffer, lengthArray, BUFFER_SIZE, timeout)
 
         return if (ret == 0 && lengthArray[0] > 0) {
             String(buffer, 0, lengthArray[0]).trim()

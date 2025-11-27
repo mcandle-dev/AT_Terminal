@@ -54,8 +54,8 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // USB Serial Library
-    implementation("com.github.mik3y:usb-serial-for-android:3.7.3")
+    // Android SerialPort API (for native UART /dev/ttyS*)
+    implementation("com.github.licheedev:Android-SerialPort-API:2.1.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

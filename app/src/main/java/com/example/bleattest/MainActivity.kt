@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
     }
 
     private fun setupAtCommandManager() {
-        atCommandManager = AtCommandManager(this)
+        atCommandManager = AtCommandManager()
         atCommandManager.setOnAtResponseListener(object : AtCommandManager.OnAtResponseListener {
             override fun onResponse(response: String) {
                 val logType = when {
@@ -87,35 +87,30 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
             }
         })
 
-        // Show available USB devices
-        val availableDevices = atCommandManager.getAvailableDevices()
-        if (availableDevices.isNotEmpty()) {
-            addLogToTerminal("Available USB devices:", LogType.INFO)
-            availableDevices.forEach { device ->
-                addLogToTerminal("  - $device", LogType.INFO)
-            }
-        }
-
-        // Initialize USB serial port
+        // Initialize serial port for Rockchip 3566 BLE module
+        // Common device paths for industrial Android devices:
+        // - /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3 (native UART)
+        // - /dev/ttyUSB0 (USB-to-Serial)
+        val devicePath = "/dev/ttyS1"  // Change this to your actual device path
         val baudrate = 115200
-        val ret = atCommandManager.initUsbSerial(baudrate)
+        val ret = atCommandManager.initSerialPort(devicePath, baudrate)
 
         when (ret) {
             0 -> {
-                addLogToTerminal("USB serial port opened @ $baudrate baud", LogType.INFO)
+                addLogToTerminal("Serial port opened: $devicePath @ $baudrate baud", LogType.INFO)
                 addLogToTerminal("Ready. Please initialize with 'Enable Master' first.", LogType.INFO)
             }
             -1 -> {
-                addLogToTerminal("No USB serial devices found", LogType.ERROR)
-                addLogToTerminal("Please connect USB device", LogType.ERROR)
+                addLogToTerminal("Device not found: $devicePath", LogType.ERROR)
+                addLogToTerminal("Please check device path", LogType.ERROR)
             }
             -2 -> {
-                addLogToTerminal("USB permission required", LogType.ERROR)
-                addLogToTerminal("Please grant USB permission and restart app", LogType.ERROR)
+                addLogToTerminal("Permission denied: $devicePath", LogType.ERROR)
+                addLogToTerminal("Please check app has root access or su permission", LogType.ERROR)
             }
             else -> {
-                addLogToTerminal("Failed to open USB serial port (code: $ret)", LogType.ERROR)
-                addLogToTerminal("Please check USB connection", LogType.ERROR)
+                addLogToTerminal("Failed to open serial port: $devicePath (code: $ret)", LogType.ERROR)
+                addLogToTerminal("Please check device path and permissions", LogType.ERROR)
             }
         }
     }
@@ -296,7 +291,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
                 atCommandManager.stopScan()
             }
         }
-        atCommandManager.closeUsbSerial()
-        Log.d(TAG, "Activity destroyed, USB serial port closed")
+        atCommandManager.closeSerialPort()
+        Log.d(TAG, "Activity destroyed, serial port closed")
     }
 }
