@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.bleattest.models.AtCommandResult
 import com.example.bleattest.models.ScanParams
 import kotlinx.coroutines.*
-import vpos.apipackage.At
 
 class AtCommandManager {
     companion object {
@@ -16,6 +15,7 @@ class AtCommandManager {
     var isScanning: Boolean = false
         private set
 
+    private val serialPortManager = SerialPortManager()
     private var receiveJob: Job? = null
     private var listener: OnAtResponseListener? = null
     private var consecutiveErrors = 0
@@ -31,6 +31,23 @@ class AtCommandManager {
     }
 
     /**
+     * Initialize serial port connection
+     * @param devicePath Serial device path (e.g. "/dev/ttyS0", "/dev/ttyUSB0")
+     * @param baudrate Baud rate (default: 115200)
+     * @return 0: success, negative: failed
+     */
+    fun initSerialPort(devicePath: String = "/dev/ttyS0", baudrate: Int = 115200): Int {
+        return serialPortManager.open(devicePath, baudrate)
+    }
+
+    /**
+     * Close serial port connection
+     */
+    fun closeSerialPort() {
+        serialPortManager.close()
+    }
+
+    /**
      * AT 명령 전송
      * @param command AT 명령 (자동으로 \r\n 추가, 단 "+++" 제외)
      * @return 0: 성공, 음수: 실패
@@ -43,7 +60,7 @@ class AtCommandManager {
         }
 
         val bytes = finalCommand.toByteArray()
-        val ret = At.Lib_ComSend(bytes, bytes.size)
+        val ret = serialPortManager.send(bytes, bytes.size)
 
         if (ret != 0) {
             Log.e(TAG, "Failed to send AT command: $command, ret=$ret")
@@ -62,7 +79,7 @@ class AtCommandManager {
         val buffer = ByteArray(BUFFER_SIZE)
         val lengthArray = intArrayOf(0)
         val timeout = 1000 // 1초 타임아웃
-        val ret = At.Lib_ComRecvAT(buffer, lengthArray, BUFFER_SIZE, timeout)
+        val ret = serialPortManager.receive(buffer, lengthArray, BUFFER_SIZE, timeout)
 
         return if (ret == 0 && lengthArray[0] > 0) {
             String(buffer, 0, lengthArray[0]).trim()
