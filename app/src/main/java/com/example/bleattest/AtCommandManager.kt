@@ -430,4 +430,34 @@ class AtCommandManager {
             )
         }
     }
+
+    /**
+     * Send Custom AT Command
+     * @param command Custom AT command (without \r\n)
+     */
+    suspend fun sendCustomCommand(command: String): AtCommandResult {
+        return withContext(Dispatchers.IO) {
+            val startTime = System.currentTimeMillis()
+
+            val ret = sendAtCommand(command)
+            if (ret != 0) {
+                return@withContext AtCommandResult(
+                    success = false,
+                    response = "",
+                    errorMessage = "Failed to send command, code: $ret",
+                    executionTime = System.currentTimeMillis() - startTime
+                )
+            }
+
+            delay(RESPONSE_TIMEOUT)
+            val response = receiveAtResponse() ?: ""
+            val executionTime = System.currentTimeMillis() - startTime
+
+            AtCommandResult(
+                success = response.isNotEmpty(),
+                response = response,
+                executionTime = executionTime
+            )
+        }
+    }
 }

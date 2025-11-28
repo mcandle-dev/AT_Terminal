@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
     private lateinit var terminalAdapter: TerminalAdapter
     private lateinit var atCommandManager: AtCommandManager
 
+    private lateinit var btnAtCommand: Button
     private lateinit var btnEnableMaster: Button
     private lateinit var btnGetMac: Button
     private lateinit var btnScan: Button
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
         setSupportActionBar(toolbar)
 
         recyclerView = findViewById(R.id.recyclerViewTerminal)
+        btnAtCommand = findViewById(R.id.btnAtCommand)
         btnEnableMaster = findViewById(R.id.btnEnableMaster)
         btnGetMac = findViewById(R.id.btnGetMac)
         btnScan = findViewById(R.id.btnScan)
@@ -116,6 +118,16 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
     }
 
     private fun setupButtonListeners() {
+        btnAtCommand.setOnClickListener {
+            val dialog = AtCommandListDialog.newInstance()
+            dialog.setOnAtCommandSelectedListener(object : AtCommandListDialog.OnAtCommandSelectedListener {
+                override fun onAtCommandSelected(command: String) {
+                    executeSendCustomCommand(command)
+                }
+            })
+            dialog.show(supportFragmentManager, AtCommandListDialog.TAG)
+        }
+
         btnEnableMaster.setOnClickListener {
             InputDialogFragment.newInstance(InputDialogFragment.CommandType.ENABLE_MASTER)
                 .show(supportFragmentManager, "ENABLE_MASTER")
@@ -247,6 +259,21 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
             if (!result.success) {
                 addLogToTerminal(
                     "Error: ${result.errorMessage ?: "Get MAC failed"}",
+                    LogType.ERROR
+                )
+            }
+        }
+    }
+
+    private fun executeSendCustomCommand(command: String) {
+        lifecycleScope.launch {
+            addLogToTerminal(command, LogType.SEND)
+
+            val result = atCommandManager.sendCustomCommand(command)
+
+            if (!result.success) {
+                addLogToTerminal(
+                    "Error: ${result.errorMessage ?: "Send command failed"}",
                     LogType.ERROR
                 )
             }
