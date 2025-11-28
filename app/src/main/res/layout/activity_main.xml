@@ -45,6 +45,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Row 0: AT Command -->
+        <Button
+            android:id="@+id/btnAtCommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="AT Command"
+            android:textSize="12sp"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white" />
+
         <!-- Row 1: Enable Master & Get MAC -->
         <LinearLayout
             android:layout_width="match_parent"

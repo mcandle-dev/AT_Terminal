@@ -1,6 +1,6 @@
-# VPOS BLE App 분석 문서
+# AT_Terminal App 분석 문서
 
-이 폴더에는 VPOS BLE App의 상세한 분석 문서들이 포함되어 있습니다.
+이 폴더에는 AT_Terminal App의 상세한 분석 문서들이 포함되어 있습니다.
 
 ## 문서 구조
 
@@ -15,9 +15,9 @@
 - 데이터 플로우
 
 ### 🔄 [03-ble-workflow.md](03-ble-workflow.md)
-- BLE 스캐닝 워크플로우
-- BLE 광고 프로세스
-- 벤더 라이브러리 연동 방식
+- AT 명령어 워크플로우
+- BLE 스캐닝 및 연결 프로세스
+- 시리얼 통신 방식
 
 ### 🧩 [04-components.md](04-components.md)
 - 각 클래스별 상세 분석
@@ -31,18 +31,18 @@
 
 ### 📱 [06-ui-structure.md](06-ui-structure.md)
 - UI 레이아웃 구조
-- 사용자 인터페이스 플로우
-- 다이얼로그 및 어댑터 구조
+- 터미널 인터페이스 플로우
+- 다이얼로그 구조
 
 ## 빠른 시작
 
 1. [개요 문서](01-overview.md)부터 읽어보세요
 2. [아키텍처](02-architecture.md)를 통해 전체 구조를 파악하세요
-3. [BLE 워크플로우](03-ble-workflow.md)로 핵심 동작을 이해하세요
+3. [AT 명령어 워크플로우](03-ble-workflow.md)로 핵심 동작을 이해하세요
 4. 필요에 따라 [컴포넌트](04-components.md)나 [개발 가이드](05-development-guide.md)를 참조하세요
 
 ## 업데이트 정보
 
-- 문서 생성일: 2025-08-19
-- 분석 대상 버전: master branch (commit b85013c)
-- 벤더 라이브러리: libVpos3893_release_20250729.aar
+- 문서 업데이트일: 2025-11-28
+- 분석 대상: AT_Terminal (EFR32BG22 UART Control)
+- 시리얼 라이브러리: google/android-serialport-api

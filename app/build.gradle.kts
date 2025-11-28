@@ -16,10 +16,20 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        ndk {
-            abiFilters += listOf("armeabi-v7a", "arm64-v8a","x86", "x86_64") // ✅ ARM 기반으로 강제
+        externalNativeBuild {
+            cmake {
+                cppFlags += ""
+            }
         }
     }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+        }
+    }
+
+//    ndkVersion = "26.1.10909125"
 
     buildTypes {
         release {
@@ -57,7 +67,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    // AAR 라이브러리 포함
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
 }
