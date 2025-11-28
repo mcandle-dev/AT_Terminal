@@ -16,10 +16,24 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        ndk {
-            abiFilters += listOf("armeabi-v7a", "arm64-v8a","x86", "x86_64") // ✅ ARM 기반으로 강제
+//        ndk {
+//            abiFilters += listOf("armeabi-v7a", "arm64-v8a","x86", "x86_64")
+//        }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags += ""
+            }
         }
     }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+        }
+    }
+
+//    ndkVersion = "26.1.10909125"
 
     buildTypes {
         release {
@@ -53,9 +67,6 @@ dependencies {
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-
-    // Android SerialPort API (for native UART /dev/ttyS*)
-    implementation("com.github.licheedev:Android-SerialPort-API:2.1.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

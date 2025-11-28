@@ -1,7 +1,6 @@
 package com.example.bleattest
 
 import android.util.Log
-import android_serialport_api.SerialPort
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
@@ -74,18 +73,27 @@ class SerialPortManager {
 
         try {
             inputStream?.close()
-            outputStream?.close()
-            serialPort?.close()
-
-            serialPort = null
             inputStream = null
-            outputStream = null
-            isOpen = false
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to close input stream", e)
+        }
 
-            Log.d(TAG, "Serial port closed")
+        try {
+            outputStream?.close()
+            outputStream = null
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to close output stream", e)
+        }
+
+        try {
+            serialPort?.close()
+            serialPort = null
         } catch (e: Exception) {
             Log.e(TAG, "Failed to close serial port", e)
         }
+
+        isOpen = false
+        Log.d(TAG, "Serial port closed")
     }
 
     /**
@@ -176,6 +184,30 @@ class SerialPortManager {
             inputStream?.available() ?: 0
         } catch (e: Exception) {
             0
+        }
+    }
+
+    /**
+     * CTS Control (Toggle RTS pin for beacon mode termination)
+     * @return 0: success, negative: failed
+     */
+    fun ctsControl(): Int {
+        if (!isOpen) {
+            Log.e(TAG, "Serial port not opened")
+            return -1
+        }
+
+        return try {
+            val ret = serialPort?.ctsControl() ?: -1
+            if (ret == 0) {
+                Log.d(TAG, "CTS control (RTS toggle) successful")
+            } else {
+                Log.e(TAG, "CTS control failed: $ret")
+            }
+            ret
+        } catch (e: Exception) {
+            Log.e(TAG, "Error in CTS control", e)
+            -2
         }
     }
 }

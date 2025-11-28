@@ -151,32 +151,129 @@ class AtCommandManager {
     }
 
     /**
+     * CTS 제어 (Beacon 모드 종료)
+     * @return 0: 성공, 음수: 실패
+     */
+    fun ctsControl(): Int {
+        return serialPortManager.ctsControl()
+    }
+
+    /**
      * Enable/Disable Master 모드
+     * AT 명령 시퀀스:
+     * 0. CTS 제어 (Beacon 모드 종료)
+     * 1. +++ (AT 모드 진입, 응답 없음)
+     * 2. AT+OBSERVER=0 (Master) 또는 AT+OBSERVER=1 (Observer)
+     * 3. AT+EXIT (AT 모드 종료)
+     * 4. +++ (AT 모드 재진입, 응답 없음)
      */
     suspend fun enableMaster(enable: Boolean): AtCommandResult {
         return withContext(Dispatchers.IO) {
             val startTime = System.currentTimeMillis()
-            val command = "AT+ENABLEMASTER=${if (enable) 1 else 0}"
 
-            val ret = sendAtCommand(command)
-            if (ret != 0) {
-                return@withContext AtCommandResult(
+            try {
+                // Step 0: CTS 제어 (Beacon 모드 종료) - TEMPORARILY DISABLED FOR TESTING
+//                Log.d(TAG, "Calling CTS control (beacon mode termination)...")
+//                val ctsRet = ctsControl()
+//                if (ctsRet != 0) {
+//                    Log.e(TAG, "CTS control failed with code: $ctsRet")
+//                    return@withContext AtCommandResult(
+//                        success = false,
+//                        response = "",
+//                        errorMessage = "CTS control failed, code: $ctsRet",
+//                        executionTime = System.currentTimeMillis() - startTime
+//                    )
+//                }
+                Log.d(TAG, "Waiting 1000ms before +++ (pre-Guard Time)...")
+                delay(1000) // Guard Time before +++: ensure no data transmitted for 1 second
+
+                // Step 1: AT 모드 진입 (+++ 응답 없음)
+                Log.d(TAG, "Sending command: +++")
+                var ret = sendAtCommand("+++")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send +++ command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+
+                Log.d(TAG, "Waiting 1000ms Guard Time for AT mode entry...")
+                delay(1000) // Guard Time: EFR32BG22 requires minimum 1 second for AT mode entry
+                Log.d(TAG, "Guard Time complete, AT mode should be active now")
+
+                // Step 2: OBSERVER 모드 설정 (0 = Master mode, 1 = Observer mode)
+                val observerCommand = if (enable) "AT+OBSERVER=0" else "AT+OBSERVER=1"
+                Log.d(TAG, "Sending command: $observerCommand")
+                ret = sendAtCommand(observerCommand)
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send OBSERVER command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+
+                // 응답 확인
+                val observerResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "OBSERVER response: $observerResponse")
+                if (!observerResponse.contains("OK", ignoreCase = true)) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = observerResponse,
+                        errorMessage = "OBSERVER command did not return OK",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+
+                // Step 3: AT 모드 종료
+                Log.d(TAG, "Sending command: AT+EXIT")
+                ret = sendAtCommand("AT+EXIT")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send EXIT command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+                val exitResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "EXIT response: $exitResponse")
+
+                // Step 4: AT 모드 재진입 (+++ 응답 없음)
+                Log.d(TAG, "Sending command: +++")
+                ret = sendAtCommand("+++")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send second +++ command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(1000) // Guard Time: EFR32BG22 requires minimum 1 second for AT mode re-entry
+
+                val executionTime = System.currentTimeMillis() - startTime
+                Log.d(TAG, "Master mode ${if (enable) "enabled" else "disabled"} successfully")
+
+                AtCommandResult(
+                    success = true,
+                    response = "Master mode ${if (enable) "enabled" else "disabled"}",
+                    executionTime = executionTime
+                )
+            } catch (e: Exception) {
+                Log.e(TAG, "Error in enableMaster: ${e.message}", e)
+                AtCommandResult(
                     success = false,
                     response = "",
-                    errorMessage = "Failed to send command, code: $ret",
+                    errorMessage = "Error: ${e.message}",
                     executionTime = System.currentTimeMillis() - startTime
                 )
             }
-
-            delay(RESPONSE_TIMEOUT)
-            val response = receiveAtResponse() ?: ""
-            val executionTime = System.currentTimeMillis() - startTime
-
-            AtCommandResult(
-                success = response.contains("OK", ignoreCase = true),
-                response = response,
-                executionTime = executionTime
-            )
         }
     }
 
