@@ -5,8 +5,8 @@
 ### 필수 요구사항
 
 #### Android Studio
-- **버전**: Arctic Fox (2020.3.1) 이상 권장
-- **Gradle Plugin**: 7.0 이상
+- **버전**: Hedgehog (2023.1) 이상 권장
+- **Gradle Plugin**: 8.0 이상
 - **Kotlin Plugin**: 최신 버전
 
 #### Android SDK
@@ -15,32 +15,39 @@
 - **Minimum SDK**: 24
 - **Build Tools**: 35.0.0
 
+#### NDK (JNI 빌드용)
+- **CMake**: 3.22.1 이상
+- **NDK Version**: 26.1 이상
+
 #### Java/Kotlin
 - **Java**: JDK 11
-- **Kotlin**: 1.5.0 이상
+- **Kotlin**: 1.9.0 이상
 
 ### 프로젝트 설정
 
 #### 1. 저장소 클론
 ```bash
 git clone <repository-url>
-cd mcandle-simple
+cd AT_Terminal
 ```
 
 #### 2. Gradle 동기화
 ```bash
 # Windows
-./gradlew clean
-./gradlew build
+.\gradlew clean
+.\gradlew build
 
-# macOS/Linux  
+# macOS/Linux
 chmod +x ./gradlew
 ./gradlew clean
 ./gradlew build
 ```
 
-#### 3. 벤더 라이브러리 확인
-`app/libs/libVpos3893_release_20250729.aar` 파일이 존재하는지 확인하세요.
+#### 3. NDK 설정
+```bash
+# Android Studio에서 NDK 자동 설치
+# Tools → SDK Manager → SDK Tools → NDK (Side by side)
+```
 
 ## 빌드 및 실행
 
@@ -59,7 +66,6 @@ chmod +x ./gradlew
 ./gradlew assembleRelease
 ```
 - 출력 위치: `app/build/outputs/apk/release/app-release-unsigned.apk`
-- ProGuard 적용 (현재 비활성화)
 - 코드 최적화 활성화
 
 #### Clean 빌드
@@ -80,30 +86,7 @@ adb install app/build/outputs/apk/debug/app-debug.apk
 
 #### 실행
 ```bash
-adb shell am start -n com.mcandle.bledemo/.MainActivity
-```
-
-## 테스트
-
-### 단위 테스트
-
-#### 테스트 실행
-```bash
-./gradlew test
-```
-
-#### 테스트 파일 위치
-- **Unit Tests**: `app/src/test/java/com/mcandle/bledemo/`
-- **Instrumented Tests**: `app/src/androidTest/java/com/mcandle/bledemo/`
-
-#### 현재 테스트
-- `ExampleUnitTest.kt`: 기본 단위 테스트
-- `ExampleInstrumentedTest.kt`: 기본 계측 테스트
-
-### 통합 테스트
-```bash
-# Android 디바이스나 에뮬레이터에서 실행
-./gradlew connectedAndroidTest
+adb shell am start -n com.example.bleattest/.MainActivity
 ```
 
 ## 디버깅
@@ -112,48 +95,84 @@ adb shell am start -n com.mcandle.bledemo/.MainActivity
 
 #### Logcat 필터링
 ```bash
-# BLE 관련 로그만 보기
-adb logcat | grep -E "(BLE_|BLEScan)"
+# AT 명령 관련 로그만 보기
+adb logcat | grep -E "(AtCommandManager|SerialPortManager)"
 
 # 앱 전체 로그
-adb logcat | grep "com.mcandle.bledemo"
+adb logcat | grep "com.example.bleattest"
+
+# 에러만 보기
+adb logcat | grep -E "ERROR|Exception"
 ```
 
 #### 주요 로그 태그
-- `BLE_MANAGER`: 메인 BLE 동작 로그
-- `BLEScan`: BleScan 클래스 로그
-- `BLE_ADVERTISE`: 광고 관련 로그
+- `AtCommandManager`: AT 명령 실행 로그
+- `SerialPortManager`: 시리얼 포트 I/O 로그
+- `MainActivity`: UI 이벤트 로그
+- `TerminalAdapter`: 터미널 로그 표시
 
 ### 일반적인 디버깅 시나리오
 
-#### 1. BLE 스캔이 동작하지 않는 경우
+#### 1. 시리얼 포트가 열리지 않는 경우
 ```kotlin
-// BleScan.java에서 확인
-Log.d("BLE_MANAGER", "Master mode: " + isMaster);
-Log.d("BLE_MANAGER", "Scanning: " + isScanning);
-
-// 벤더 라이브러리 호출 결과 확인
-int result = At.Lib_EnableMaster(true);
-Log.d("BLE_MANAGER", "Enable master result: " + result);
+// SerialPortManager.kt에서 확인
+val ret = open("/dev/ttyS1", 115200)
+when (ret) {
+    -1 -> "Device not found" // 디바이스 파일이 없음
+    -2 -> "Permission denied" // root/su 권한 필요
+    -3 -> "IO exception" // 하드웨어 문제
+}
 ```
 
-#### 2. 권한 문제
+**해결방법**:
+- 디바이스 경로 확인: `adb shell ls /dev/ttyS*`
+- SELinux 확인: `adb shell getenforce`
+- 권한 확인: `adb shell chmod 666 /dev/ttyS1`
+
+#### 2. AT 명령 응답 없음
+```kotlin
+// AtCommandManager.kt
+fun receiveAtResponse(): String? {
+    // 타임아웃: 1000ms
+    // 응답이 없으면 null 반환
+}
+```
+
+**해결방법**:
+- 하드웨어 연결 확인
+- 보드레이트 확인 (115200)
+- CTS/RTS 핀 연결 확인
+
+#### 3. 백그라운드 수신 중단
+```kotlin
+// AtCommandManager.kt
+private var consecutiveErrors = 0
+private val maxConsecutiveErrors = 3
+
+// 연속 3회 에러 발생 시 자동 중단
+```
+
+**해결방법**:
+- 로그에서 에러 원인 확인
+- 시리얼 포트 재연결
+- 앱 재시작
+
+### 권한 설정
+
+#### AndroidManifest.xml
 ```xml
-<!-- AndroidManifest.xml에 추가 -->
 <uses-permission android:name="android.permission.BLUETOOTH" />
 <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
 
-#### 3. 메모리 누수 확인
-```kotlin
-// MainActivity.onDestroy()에서
-override fun onDestroy() {
-    scanJob?.cancel()
-    bleScan.stopAllScanning()
-    super.onDestroy()
-}
+#### SELinux 설정
+산업용 Android 디바이스에서는 SELinux를 permissive 모드로 설정해야 할 수 있습니다:
+```bash
+adb shell su 0 setenforce 0
 ```
 
 ## 코딩 컨벤션
@@ -163,123 +182,91 @@ override fun onDestroy() {
 #### 네이밍 규칙
 ```kotlin
 // 클래스: PascalCase
-class MainActivity : AppCompatActivity()
+class AtCommandManager
 
 // 함수: camelCase
-private fun startContinuousScanning()
+fun sendAtCommand(command: String)
 
 // 변수: camelCase
 private var isScanning = false
 
 // 상수: UPPER_SNAKE_CASE
 companion object {
-    private const val SCAN_TIMEOUT = 10000L
+    private const val BUFFER_SIZE = 4096
+    private const val RESPONSE_TIMEOUT = 200L
 }
 ```
 
 #### 코드 구조
 ```kotlin
-class MainActivity : AppCompatActivity() {
-    // 1. 컴패니언 객체
+class AtCommandManager {
+    // 1. Companion object
     companion object {
-        private const val TAG = "MainActivity"
+        private const val TAG = "AtCommandManager"
     }
-    
-    // 2. 프로퍼티
-    private lateinit var recyclerView: RecyclerView
-    private var isScanning = false
-    
-    // 3. 생명주기 메서드
-    override fun onCreate(savedInstanceState: Bundle?) {
-        // 구현
-    }
-    
-    // 4. 퍼블릭 메서드
-    fun startScanning() {
-        // 구현
-    }
-    
-    // 5. 프라이빗 메서드
-    private fun setupViews() {
-        // 구현
-    }
-}
-```
 
-### Java 스타일
+    // 2. Properties
+    private val serialPortManager = SerialPortManager()
+    private var receiveJob: Job? = null
 
-#### 네이밍 규칙
-```java
-// 클래스: PascalCase
-public class BleScan {
-    // 상수: UPPER_SNAKE_CASE
-    private static final String TAG = "BLEScan";
-    
-    // 변수: camelCase
-    private boolean isScanning;
-    
-    // 메서드: camelCase
-    public int enableMasterMode(boolean enable) {
-        return 0;
+    // 3. Interface
+    interface OnAtResponseListener {
+        fun onResponse(response: String)
+        fun onError(error: String)
     }
-}
-```
 
-#### 코드 구조
-```java
-public class BleScan {
-    // 1. 상수
-    private static final String TAG = "BLEScan";
-    
-    // 2. 인터페이스
-    public interface ScanResultListener {
-        void onScanResult(JSONArray scanData);
-    }
-    
-    // 3. 필드
-    private boolean isScanning = false;
-    
-    // 4. 생성자
-    public BleScan() {
-        // 초기화
-    }
-    
-    // 5. 퍼블릭 메서드
-    public int enableMasterMode(boolean enable) {
+    // 4. Public methods
+    fun initSerialPort(devicePath: String, baudrate: Int): Int {
         // 구현
     }
-    
-    // 6. 프라이빗 메서드
-    private void logResult(int result) {
+
+    // 5. Private methods
+    private fun receiveAtResponse(): String? {
         // 구현
     }
 }
 ```
 
-### XML 리소스 스타일
+### 비동기 처리
 
-#### 레이아웃 네이밍
-```xml
-<!-- activity_main.xml -->
-<LinearLayout
-    android:id="@+id/mainContainer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
-    <Button
-        android:id="@+id/btnMaster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Master" />
-        
-</LinearLayout>
+#### Coroutines 사용
+```kotlin
+// MainActivity에서 AT 명령 실행
+lifecycleScope.launch {
+    val result = atCommandManager.enableMaster(true)
+    if (result.success) {
+        addLogToTerminal("Success", LogType.INFO)
+    }
+}
+
+// AtCommandManager에서 suspend 함수
+suspend fun enableMaster(enable: Boolean): AtCommandResult {
+    return withContext(Dispatchers.IO) {
+        // 블로킹 I/O 작업
+    }
+}
 ```
 
-#### 리소스 ID 네이밍 규칙
-- **Button**: `btn + 기능명` (예: `btnMaster`, `btnScan`)
-- **TextView**: `tv + 내용` (예: `tvDeviceName`, `tvRssi`)
-- **EditText**: `et + 용도` (예: `etInput`, `etSearch`)
-- **RecyclerView**: `rv + 목록` (예: `rvDeviceList`)
+#### 백그라운드 작업
+```kotlin
+// 백그라운드 수신
+fun startReceiving() {
+    receiveJob = CoroutineScope(Dispatchers.IO).launch {
+        while (isActive) {
+            val response = receiveAtResponse()
+            withContext(Dispatchers.Main) {
+                listener?.onResponse(response)
+            }
+        }
+    }
+}
+
+// 정리
+fun stopReceiving() {
+    receiveJob?.cancel()
+    receiveJob = null
+}
+```
 
 ## 의존성 관리
 
@@ -292,188 +279,166 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
     // 테스트
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    
-    // 벤더 라이브러리
-    implementation(fileTree(mapOf(
-        "dir" to "libs", 
-        "include" to listOf("*.aar", "*.jar")
-    )))
 }
 ```
 
-### 새 의존성 추가
+### JNI/NDK 설정
 
-#### 1. libs.versions.toml 수정
-```toml
-[versions]
-newLibrary = "1.0.0"
+#### CMakeLists.txt
+```cmake
+cmake_minimum_required(VERSION 3.22.1)
 
-[libraries]
-new-library = { module = "com.example:new-library", version.ref = "newLibrary" }
+project("serialport")
 
-[plugins]
-# 플러그인 추가 시
+add_library(serial-port
+        SHARED
+        SerialPort.cpp)
+
+find_library(log-lib log)
+
+target_link_libraries(serial-port ${log-lib})
 ```
 
-#### 2. build.gradle.kts에서 사용
+#### build.gradle.kts
 ```kotlin
-implementation(libs.new.library)
+externalNativeBuild {
+    cmake {
+        path = file("src/main/cpp/CMakeLists.txt")
+    }
+}
 ```
 
 ## 성능 최적화
 
 ### 메모리 최적화
 
-#### 1. 디바이스 리스트 크기 제한
+#### 로그 버퍼 제한
 ```kotlin
-private fun updateDeviceList(newDevice: DeviceModel) {
-    // 최대 100개로 제한
-    if (deviceList.size >= 100) {
-        deviceList.removeAt(0)  // 가장 오래된 항목 제거
+// TerminalAdapter.kt
+private val maxLogCount = 1000
+
+fun addLog(log: TerminalLog) {
+    if (logs.size >= maxLogCount) {
+        logs.removeAt(0)
     }
-    // ... 나머지 로직
+    logs.add(log)
 }
 ```
 
-#### 2. 이미지 최적화
+#### 리소스 정리
 ```kotlin
-// Glide나 Picasso 사용 권장
-implementation("com.github.bumptech.glide:glide:4.14.2")
+// MainActivity.onDestroy()
+override fun onDestroy() {
+    atCommandManager.stopReceiving()
+    if (isScanning) {
+        lifecycleScope.launch {
+            atCommandManager.stopScan()
+        }
+    }
+    atCommandManager.closeSerialPort()
+}
 ```
 
 ### 배터리 최적화
 
-#### 1. 불필요한 스캔 방지
+#### 백그라운드 제한
 ```kotlin
 override fun onPause() {
     super.onPause()
-    if (isScanning) {
-        // 앱이 백그라운드로 이동하면 스캔 일시정지
-        pauseScanning()
-    }
+    // 앱이 백그라운드로 이동 시 불필요한 작업 중지
 }
 
 override fun onResume() {
     super.onResume()
-    if (wasScanningBeforePause) {
-        // 앱이 다시 포어그라운드로 오면 스캔 재개
-        resumeScanning()
-    }
+    // 앱 재개 시 필요한 작업 재시작
 }
-```
-
-#### 2. 스캔 주기 조절
-```kotlin
-// 연속 스캔에서 적절한 대기 시간 추가
-Thread.sleep(100)  // 100ms 대기
-```
-
-## 보안 고려사항
-
-### 권한 관리
-
-#### 런타임 권한 체크
-```kotlin
-private fun checkBLEPermissions(): Boolean {
-    val permissions = arrayOf(
-        Manifest.permission.BLUETOOTH,
-        Manifest.permission.BLUETOOTH_ADMIN,
-        Manifest.permission.ACCESS_FINE_LOCATION
-    )
-    
-    return permissions.all { 
-        ContextCompat.checkSelfPermission(this, it) == 
-        PackageManager.PERMISSION_GRANTED 
-    }
-}
-
-private fun requestBLEPermissions() {
-    ActivityCompat.requestPermissions(
-        this,
-        arrayOf(
-            Manifest.permission.BLUETOOTH,
-            Manifest.permission.BLUETOOTH_ADMIN,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ),
-        PERMISSION_REQUEST_CODE
-    )
-}
-```
-
-### 데이터 보호
-
-#### 1. 로그에서 민감 정보 제거
-```kotlin
-// 나쁜 예
-Log.d("BLE", "Device MAC: ${device.address}")
-
-// 좋은 예  
-Log.d("BLE", "Device MAC: ${maskMacAddress(device.address)}")
-
-private fun maskMacAddress(mac: String): String {
-    return mac.take(8) + "****" + mac.takeLast(2)
-}
-```
-
-#### 2. 데이터 암호화
-```kotlin
-// SharedPreferences 사용 시 암호화
-// implementation "androidx.security:security-crypto:1.0.0"
 ```
 
 ## 문제 해결
 
 ### 자주 발생하는 문제
 
-#### 1. AAR 라이브러리 로딩 실패
+#### 1. JNI 라이브러리 로딩 실패
 ```
-java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader
+java.lang.UnsatisfiedLinkError: dlopen failed
 ```
 **해결방법**:
-- `app/libs/` 폴더에 AAR 파일이 있는지 확인
-- `build.gradle.kts`의 `fileTree` 설정 확인
+- NDK 버전 확인
+- CMakeLists.txt 설정 확인
 - Clean & Rebuild 실행
 
-#### 2. BLE 스캔 권한 에러
+#### 2. 시리얼 포트 권한 에러
 ```
-java.lang.SecurityException: Need ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION permission
+SecurityException: Permission denied
 ```
 **해결방법**:
-- AndroidManifest.xml에 권한 추가
-- 런타임 권한 요청 구현
-- 위치 서비스 활성화 확인
+- Root 권한 확인: `adb shell su`
+- 디바이스 파일 권한 확인: `ls -l /dev/ttyS*`
+- SELinux 확인: `getenforce`
 
-#### 3. 메모리 부족
+#### 3. AT 명령 타임아웃
 ```
-java.lang.OutOfMemoryError
+Failed to receive AT response, ret=-4
 ```
 **해결방법**:
-- 디바이스 리스트 크기 제한
-- 사용하지 않는 객체 null 처리
-- 백그라운드 스레드 정리
+- 하드웨어 연결 확인
+- BLE 모듈 전원 확인
+- 보드레이트 확인
 
 ### 디버깅 도구
 
-#### 1. ADB 명령어
+#### ADB 명령어
 ```bash
-# 앱 로그 실시간 확인
-adb logcat | grep "mcandle"
+# 로그 실시간 확인
+adb logcat -s AtCommandManager:D SerialPortManager:D
 
 # 메모리 사용량 확인
-adb shell dumpsys meminfo com.mcandle.bledemo
+adb shell dumpsys meminfo com.example.bleattest
 
-# CPU 사용량 확인  
-adb shell top | grep bledemo
+# CPU 사용량 확인
+adb shell top | grep bleattest
+
+# 시리얼 포트 상태 확인
+adb shell ls -l /dev/ttyS*
+adb shell cat /proc/tty/driver/serial
 ```
 
-#### 2. Android Studio 프로파일러
+#### Android Studio Profiler
 - **Memory Profiler**: 메모리 누수 탐지
-- **CPU Profiler**: 성능 병목 지점 분석
-- **Network Profiler**: BLE 통신 분석
+- **CPU Profiler**: 성능 병목 분석
+- **Network Profiler**: 통신 패킷 분석
+
+## 테스트
+
+### 단위 테스트
+```bash
+./gradlew test
+```
+
+### Instrumented 테스트
+```bash
+./gradlew connectedAndroidTest
+```
+
+### 수동 테스트 체크리스트
+- [ ] 시리얼 포트 연결 확인
+- [ ] Master 모드 활성화
+- [ ] MAC 주소 조회
+- [ ] BLE 스캔 시작/중지
+- [ ] 디바이스 연결
+- [ ] 데이터 전송
+- [ ] 에러 처리 확인
+- [ ] 앱 재시작 시 동작 확인

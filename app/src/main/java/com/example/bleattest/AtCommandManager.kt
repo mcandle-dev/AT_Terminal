@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.bleattest.models.AtCommandResult
 import com.example.bleattest.models.ScanParams
 import kotlinx.coroutines.*
-import vpos.apipackage.At
 
 class AtCommandManager {
     companion object {
@@ -16,6 +15,7 @@ class AtCommandManager {
     var isScanning: Boolean = false
         private set
 
+    private val serialPortManager = SerialPortManager()
     private var receiveJob: Job? = null
     private var listener: OnAtResponseListener? = null
     private var consecutiveErrors = 0
@@ -31,6 +31,23 @@ class AtCommandManager {
     }
 
     /**
+     * Initialize serial port connection
+     * @param devicePath Serial device path (e.g. "/dev/ttyS0", "/dev/ttyS1")
+     * @param baudrate Baud rate (default: 115200)
+     * @return 0: success, negative: failed
+     */
+    fun initSerialPort(devicePath: String = "/dev/ttyS0", baudrate: Int = 115200): Int {
+        return serialPortManager.open(devicePath, baudrate)
+    }
+
+    /**
+     * Close serial port connection
+     */
+    fun closeSerialPort() {
+        serialPortManager.close()
+    }
+
+    /**
      * AT 명령 전송
      * @param command AT 명령 (자동으로 \r\n 추가, 단 "+++" 제외)
      * @return 0: 성공, 음수: 실패
@@ -43,7 +60,7 @@ class AtCommandManager {
         }
 
         val bytes = finalCommand.toByteArray()
-        val ret = At.Lib_ComSend(bytes, bytes.size)
+        val ret = serialPortManager.send(bytes, bytes.size)
 
         if (ret != 0) {
             Log.e(TAG, "Failed to send AT command: $command, ret=$ret")
@@ -62,7 +79,7 @@ class AtCommandManager {
         val buffer = ByteArray(BUFFER_SIZE)
         val lengthArray = intArrayOf(0)
         val timeout = 1000 // 1초 타임아웃
-        val ret = At.Lib_ComRecvAT(buffer, lengthArray, BUFFER_SIZE, timeout)
+        val ret = serialPortManager.receive(buffer, lengthArray, BUFFER_SIZE, timeout)
 
         return if (ret == 0 && lengthArray[0] > 0) {
             String(buffer, 0, lengthArray[0]).trim()
@@ -134,32 +151,129 @@ class AtCommandManager {
     }
 
     /**
+     * CTS 제어 (Beacon 모드 종료)
+     * @return 0: 성공, 음수: 실패
+     */
+    fun ctsControl(): Int {
+        return serialPortManager.ctsControl()
+    }
+
+    /**
      * Enable/Disable Master 모드
+     * AT 명령 시퀀스:
+     * 0. CTS 제어 (Beacon 모드 종료)
+     * 1. +++ (AT 모드 진입, 응답 없음)
+     * 2. AT+OBSERVER=0 (Master) 또는 AT+OBSERVER=1 (Observer)
+     * 3. AT+EXIT (AT 모드 종료)
+     * 4. +++ (AT 모드 재진입, 응답 없음)
      */
     suspend fun enableMaster(enable: Boolean): AtCommandResult {
         return withContext(Dispatchers.IO) {
             val startTime = System.currentTimeMillis()
-            val command = "AT+ENABLEMASTER=${if (enable) 1 else 0}"
 
-            val ret = sendAtCommand(command)
-            if (ret != 0) {
-                return@withContext AtCommandResult(
+            try {
+                // Step 0: CTS 제어 (Beacon 모드 종료) - TEMPORARILY DISABLED FOR TESTING
+//                Log.d(TAG, "Calling CTS control (beacon mode termination)...")
+//                val ctsRet = ctsControl()
+//                if (ctsRet != 0) {
+//                    Log.e(TAG, "CTS control failed with code: $ctsRet")
+//                    return@withContext AtCommandResult(
+//                        success = false,
+//                        response = "",
+//                        errorMessage = "CTS control failed, code: $ctsRet",
+//                        executionTime = System.currentTimeMillis() - startTime
+//                    )
+//                }
+                Log.d(TAG, "Waiting 1000ms before +++ (pre-Guard Time)...")
+                delay(1000) // Guard Time before +++: ensure no data transmitted for 1 second
+
+                // Step 1: AT 모드 진입 (+++ 응답 없음)
+                Log.d(TAG, "Sending command: +++")
+                var ret = sendAtCommand("+++")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send +++ command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+
+                Log.d(TAG, "Waiting 1000ms Guard Time for AT mode entry...")
+                delay(1000) // Guard Time: EFR32BG22 requires minimum 1 second for AT mode entry
+                Log.d(TAG, "Guard Time complete, AT mode should be active now")
+
+                // Step 2: OBSERVER 모드 설정 (0 = Master mode, 1 = Observer mode)
+                val observerCommand = if (enable) "AT+OBSERVER=0" else "AT+OBSERVER=1"
+                Log.d(TAG, "Sending command: $observerCommand")
+                ret = sendAtCommand(observerCommand)
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send OBSERVER command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+
+                // 응답 확인
+                val observerResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "OBSERVER response: $observerResponse")
+                if (!observerResponse.contains("OK", ignoreCase = true)) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = observerResponse,
+                        errorMessage = "OBSERVER command did not return OK",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+
+                // Step 3: AT 모드 종료
+                Log.d(TAG, "Sending command: AT+EXIT")
+                ret = sendAtCommand("AT+EXIT")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send EXIT command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+                val exitResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "EXIT response: $exitResponse")
+
+                // Step 4: AT 모드 재진입 (+++ 응답 없음)
+                Log.d(TAG, "Sending command: +++")
+                ret = sendAtCommand("+++")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send second +++ command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(1000) // Guard Time: EFR32BG22 requires minimum 1 second for AT mode re-entry
+
+                val executionTime = System.currentTimeMillis() - startTime
+                Log.d(TAG, "Master mode ${if (enable) "enabled" else "disabled"} successfully")
+
+                AtCommandResult(
+                    success = true,
+                    response = "Master mode ${if (enable) "enabled" else "disabled"}",
+                    executionTime = executionTime
+                )
+            } catch (e: Exception) {
+                Log.e(TAG, "Error in enableMaster: ${e.message}", e)
+                AtCommandResult(
                     success = false,
                     response = "",
-                    errorMessage = "Failed to send command, code: $ret",
+                    errorMessage = "Error: ${e.message}",
                     executionTime = System.currentTimeMillis() - startTime
                 )
             }
-
-            delay(RESPONSE_TIMEOUT)
-            val response = receiveAtResponse() ?: ""
-            val executionTime = System.currentTimeMillis() - startTime
-
-            AtCommandResult(
-                success = response.contains("OK", ignoreCase = true),
-                response = response,
-                executionTime = executionTime
-            )
         }
     }
 
@@ -311,6 +425,36 @@ class AtCommandManager {
 
             AtCommandResult(
                 success = response.contains("OK", ignoreCase = true),
+                response = response,
+                executionTime = executionTime
+            )
+        }
+    }
+
+    /**
+     * Send Custom AT Command
+     * @param command Custom AT command (without \r\n)
+     */
+    suspend fun sendCustomCommand(command: String): AtCommandResult {
+        return withContext(Dispatchers.IO) {
+            val startTime = System.currentTimeMillis()
+
+            val ret = sendAtCommand(command)
+            if (ret != 0) {
+                return@withContext AtCommandResult(
+                    success = false,
+                    response = "",
+                    errorMessage = "Failed to send command, code: $ret",
+                    executionTime = System.currentTimeMillis() - startTime
+                )
+            }
+
+            delay(RESPONSE_TIMEOUT)
+            val response = receiveAtResponse() ?: ""
+            val executionTime = System.currentTimeMillis() - startTime
+
+            AtCommandResult(
+                success = response.isNotEmpty(),
                 response = response,
                 executionTime = executionTime
             )

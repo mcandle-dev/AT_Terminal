@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
     private lateinit var terminalAdapter: TerminalAdapter
     private lateinit var atCommandManager: AtCommandManager
 
+    private lateinit var btnAtCommand: Button
     private lateinit var btnEnableMaster: Button
     private lateinit var btnGetMac: Button
     private lateinit var btnScan: Button
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
         setSupportActionBar(toolbar)
 
         recyclerView = findViewById(R.id.recyclerViewTerminal)
+        btnAtCommand = findViewById(R.id.btnAtCommand)
         btnEnableMaster = findViewById(R.id.btnEnableMaster)
         btnGetMac = findViewById(R.id.btnGetMac)
         btnScan = findViewById(R.id.btnScan)
@@ -87,11 +89,45 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
             }
         })
 
-        // Don't start receiving automatically - will start after first command
-        addLogToTerminal("Ready. Please initialize with 'Enable Master' first.", LogType.INFO)
+        // Initialize serial port for Rockchip 3566 BLE module
+        // Common device paths for industrial Android devices:
+        // - /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3 (native UART)
+        // - /dev/ttyUSB0 (USB-to-Serial)
+        val devicePath = "/dev/ttyS1"  // Change this to your actual device path
+        val baudrate = 115200
+        val ret = atCommandManager.initSerialPort(devicePath, baudrate)
+
+        when (ret) {
+            0 -> {
+                addLogToTerminal("Serial port opened: $devicePath @ $baudrate baud", LogType.INFO)
+                addLogToTerminal("Ready. Please initialize with 'Enable Master' first.", LogType.INFO)
+            }
+            -1 -> {
+                addLogToTerminal("Device not found: $devicePath", LogType.ERROR)
+                addLogToTerminal("Please check device path", LogType.ERROR)
+            }
+            -2 -> {
+                addLogToTerminal("Permission denied: $devicePath", LogType.ERROR)
+                addLogToTerminal("Please check app has root access or su permission", LogType.ERROR)
+            }
+            else -> {
+                addLogToTerminal("Failed to open serial port: $devicePath (code: $ret)", LogType.ERROR)
+                addLogToTerminal("Please check device path and permissions", LogType.ERROR)
+            }
+        }
     }
 
     private fun setupButtonListeners() {
+        btnAtCommand.setOnClickListener {
+            val dialog = AtCommandListDialog.newInstance()
+            dialog.setOnAtCommandSelectedListener(object : AtCommandListDialog.OnAtCommandSelectedListener {
+                override fun onAtCommandSelected(command: String) {
+                    executeSendCustomCommand(command)
+                }
+            })
+            dialog.show(supportFragmentManager, AtCommandListDialog.TAG)
+        }
+
         btnEnableMaster.setOnClickListener {
             InputDialogFragment.newInstance(InputDialogFragment.CommandType.ENABLE_MASTER)
                 .show(supportFragmentManager, "ENABLE_MASTER")
@@ -229,6 +265,21 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
         }
     }
 
+    private fun executeSendCustomCommand(command: String) {
+        lifecycleScope.launch {
+            addLogToTerminal(command, LogType.SEND)
+
+            val result = atCommandManager.sendCustomCommand(command)
+
+            if (!result.success) {
+                addLogToTerminal(
+                    "Error: ${result.errorMessage ?: "Send command failed"}",
+                    LogType.ERROR
+                )
+            }
+        }
+    }
+
     private fun executeStopScan() {
         lifecycleScope.launch {
             addLogToTerminal("AT+STOPSCAN", LogType.SEND)
@@ -267,6 +318,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
                 atCommandManager.stopScan()
             }
         }
-        Log.d(TAG, "Activity destroyed")
+        atCommandManager.closeSerialPort()
+        Log.d(TAG, "Activity destroyed, serial port closed")
     }
 }

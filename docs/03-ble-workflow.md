@@ -1,325 +1,409 @@
-# BLE 워크플로우
+# AT 명령어 및 BLE 워크플로우
 
-## BLE 동작 개요
+## AT 명령어 동작 개요
 
-VPOS BLE App의 Bluetooth Low Energy 동작은 크게 **스캐닝(Scanning)**과 **광고(Advertising)** 두 가지 주요 워크플로우로 구성됩니다.
+AT_Terminal의 EFR32BG22 BLE 제어는 크게 **AT 명령어 전송**과 **응답 수신**으로 구성됩니다.
 
-## 1. BLE 스캐닝 워크플로우
+## 1. 마스터 모드 활성화 워크플로우
 
-### 1.1 초기화 및 마스터 모드 설정
+### 1.1 Enable Master 시퀀스
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant MainActivity
-    participant BleScan
-    participant VendorLib as At API
-    participant Hardware
+EFR32BG22 모듈을 Master 모드로 전환하는 과정입니다.
 
-    User->>MainActivity: "Master" 버튼 클릭
-    MainActivity->>BleScan: enableMasterMode(true)
-    BleScan->>VendorLib: Lib_EnableMaster(true)
-    VendorLib->>Hardware: BLE 마스터 모드 활성화
-    Hardware-->>VendorLib: 성공/실패 응답
-    VendorLib-->>BleScan: 결과 코드 반환
-    BleScan-->>MainActivity: 로그 출력
+```
+사용자 → InputDialog → MainActivity → AtCommandManager → SerialPortManager → EFR32BG22
+```
+
+**AT 명령 시퀀스**:
+```
+Step 0: CTS 제어 (Beacon 모드 종료)
+Step 1: +++ (AT 모드 진입, Guard Time 필요)
+Step 2: AT+OBSERVER=0 (Master 모드) 또는 AT+OBSERVER=1 (Observer 모드)
+Step 3: AT+EXIT (AT 모드 종료)
+Step 4: +++ (AT 모드 재진입)
 ```
 
 **코드 플로우**:
 ```kotlin
 // MainActivity.kt
-btn1.setOnClickListener {
-    Step1()  // enableMasterMode 호출
-}
+override fun onEnableMaster(enable: Boolean) {
+    lifecycleScope.launch {
+        val result = atCommandManager.enableMaster(enable)
+        if (result.success) {
+            addLogToTerminal("Master mode enabled", LogType.INFO)
 
-private fun Step1() {
-    val result = bleScan.enableMasterMode(true)
-    Log.d("BLE_MANAGER", "Master mode enabled: $result")
-}
-```
-
-```java
-// BleScan.java
-public int enableMasterMode(boolean enable) {
-    if (isMaster == enable) {
-        return 0; // 이미 같은 상태
-    }
-    int ret = At.Lib_EnableMaster(enable);
-    isMaster = enable;
-    return ret;
-}
-```
-
-### 1.2 단발 스캔 워크플로우
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant MainActivity
-    participant BleScan
-    participant VendorLib as At API
-    participant Hardware
-
-    User->>MainActivity: "Scan" 버튼 클릭
-    MainActivity->>BleScan: startNewScan()
-    BleScan->>VendorLib: Lib_AtStartNewScan()
-    VendorLib->>Hardware: 스캔 시작 명령
-    
-    loop 스캔 중
-        Hardware->>VendorLib: BLE 광고 패킷 수신
-        VendorLib->>BleScan: 데이터 버퍼에 저장
-        BleScan->>BleScan: 백그라운드 스레드에서 데이터 읽기
-        BleScan->>MainActivity: ScanResultListener.onScanResult()
-        MainActivity->>MainActivity: DeviceModel 생성 및 리스트 업데이트
-        MainActivity->>UI: RecyclerView 업데이트
-    end
-```
-
-**코드 플로우**:
-```kotlin
-// MainActivity.kt - 단발 스캔
-private fun Step2() {
-    val result = bleScan.startNewScan()
-    Log.d("BLE_MANAGER", "New scan started: $result")
-}
-```
-
-```java
-// BleScan.java - 스캔 시작
-public int startNewScan() {
-    Log.d(TAG, "Starting new BLE scan");
-    int result = At.Lib_AtStartNewScan();
-    return result;
-}
-```
-
-### 1.3 연속 스캔 워크플로우
-
-연속 스캔은 **토글 방식**으로 동작하며, 백그라운드 스레드에서 지속적으로 데이터를 읽습니다.
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant MainActivity
-    participant BleScan
-    participant VendorLib as At API
-
-    User->>MainActivity: "ComRev" 버튼 클릭
-    
-    alt 스캔이 비활성 상태
-        MainActivity->>BleScan: startContinuousScan()
-        BleScan->>VendorLib: Lib_AtStartNewScan()
-        
-        loop 연속 데이터 읽기
-            BleScan->>VendorLib: Lib_ComRecvAT()
-            VendorLib-->>BleScan: BLE 데이터 반환
-            BleScan->>BleScan: JSON 파싱 및 처리
-            BleScan->>MainActivity: 콜백으로 결과 전달
-        end
-        
-    else 스캔이 활성 상태  
-        MainActivity->>BleScan: stopContinuousScan()
-        BleScan->>BleScan: 백그라운드 스레드 중지
-    end
-```
-
-**코드 플로우**:
-```kotlin
-// MainActivity.kt - 연속 스캔 토글
-private fun toggleScan() {
-    if (isScanning) {
-        // 스캔 중지
-        scanJob?.cancel()
-        isScanning = false
-        btn3.text = "ComRev"
-    } else {
-        // 스캔 시작
-        startContinuousScanning()
-        isScanning = true
-        btn3.text = "Stop"
+            // 백그라운드 수신 시작
+            if (enable && !atCommandManager.isReceiving()) {
+                atCommandManager.startReceiving()
+            }
+        }
     }
 }
 
-private fun startContinuousScanning() {
-    scanJob = lifecycleScope.launch(Dispatchers.IO) {
-        bleScan.startContinuousReceiving { jsonData ->
-            // 메인 스레드에서 UI 업데이트
-            runOnUiThread {
-                processScanResults(jsonData)
+// AtCommandManager.kt
+suspend fun enableMaster(enable: Boolean): AtCommandResult {
+    // Step 0: CTS 제어
+    val ctsRet = ctsControl()
+    delay(100)
+
+    // Step 1: +++ 전송 (Guard Time)
+    sendAtCommand("+++")
+    delay(100)
+
+    // Step 2: OBSERVER 설정
+    val observerCommand = if (enable) "AT+OBSERVER=0" else "AT+OBSERVER=1"
+    sendAtCommand(observerCommand)
+    delay(200)
+    val response = receiveAtResponse()
+
+    // Step 3: AT+EXIT
+    sendAtCommand("AT+EXIT")
+    delay(200)
+
+    // Step 4: +++ 재진입
+    sendAtCommand("+++")
+    delay(100)
+
+    return AtCommandResult(success = true, response = "Master mode ${if (enable) "enabled" else "disabled"}")
+}
+```
+
+**타이밍 다이어그램**:
+```
+[APP]    +++       →  [BLE]
+         ├─ 100ms delay
+[APP]    AT+OBSERVER=0 →  [BLE]
+         ├─ 200ms delay
+[BLE]    ← OK       [APP]
+[APP]    AT+EXIT    →  [BLE]
+         ├─ 200ms delay
+[BLE]    ← OK       [APP]
+[APP]    +++       →  [BLE]
+         ├─ 100ms delay
+```
+
+## 2. BLE 스캔 워크플로우
+
+### 2.1 스캔 시작
+
+```kotlin
+// MainActivity.kt
+override fun onStartScan(params: ScanParams) {
+    lifecycleScope.launch {
+        // AT+STARTNEWSCAN=<MAC>,<Name>,<RSSI>,<MfgID>,<Data>
+        val result = atCommandManager.startScan(params)
+
+        if (result.success) {
+            isScanning = true
+            updateScanButton(true)
+        }
+    }
+}
+```
+
+**스캔 파라미터**:
+```kotlin
+data class ScanParams(
+    val macAddress: String = "",      // 필터링할 MAC (선택)
+    val broadcastName: String = "",   // 필터링할 이름 (선택)
+    val minRssi: Int = -100,          // 최소 RSSI (선택)
+    val manufacturerId: String = "",  // 제조사 ID (선택)
+    val data: String = ""             // 필터링할 데이터 (선택)
+)
+
+fun toAtCommand(): String {
+    val rssiValue = if (minRssi < 0) -minRssi else minRssi
+    return "AT+STARTNEWSCAN=$macAddress,$broadcastName,$rssiValue,$manufacturerId,$data"
+}
+```
+
+**예제 AT 명령**:
+```
+AT+STARTNEWSCAN=,,80,,           # 모든 디바이스, RSSI >= -80
+AT+STARTNEWSCAN=AA:BB:CC:DD:EE:FF,,,, # 특정 MAC만
+AT+STARTNEWSCAN=,MyDevice,,,     # 이름으로 필터링
+```
+
+### 2.2 스캔 결과 수신
+
+백그라운드에서 지속적으로 스캔 결과를 수신합니다:
+
+```kotlin
+// AtCommandManager.kt
+fun startReceiving() {
+    receiveJob = CoroutineScope(Dispatchers.IO).launch {
+        while (isActive && consecutiveErrors < maxConsecutiveErrors) {
+            val response = receiveAtResponse()
+            if (response != null && response.isNotEmpty()) {
+                consecutiveErrors = 0
+                withContext(Dispatchers.Main) {
+                    listener?.onResponse(response)
+                }
+                delay(100)
+            } else {
+                delay(500)
             }
         }
     }
 }
 ```
 
-### 1.4 데이터 수신 및 처리
-
-BLE 스캔 데이터는 JSON 형태로 수신되며, 다음과 같은 구조를 가집니다:
-
-```json
-[
-  {
-    "deviceName": "MyDevice",
-    "macAddress": "AA:BB:CC:DD:EE:FF",
-    "rssi": -45,
-    "txPower": 4,
-    "serviceUuid": "0000180F-0000-1000-8000-00805F9B34FB",
-    "serviceData": "0102030405",
-    "manufacturerData": "4C000215..."
-  }
-]
+**스캔 결과 예시**:
+```
+SCAN:MAC=AA:BB:CC:DD:EE:FF,NAME=Device1,RSSI=-45,TXPW=4
+SCAN:MAC=11:22:33:44:55:66,NAME=Device2,RSSI=-60,TXPW=0
 ```
 
-**데이터 처리 플로우**:
+**UI 업데이트**:
 ```kotlin
 // MainActivity.kt
-private fun processScanResults(jsonArray: JSONArray) {
-    for (i in 0 until jsonArray.length()) {
-        val jsonObject = jsonArray.getJSONObject(i)
-        val device = createDeviceModel(
-            deviceName = jsonObject.optString("deviceName"),
-            macAddress = jsonObject.getString("macAddress"),
-            rssi = jsonObject.getInt("rssi"),
-            txPower = jsonObject.optInt("txPower"),
-            serviceUuid = jsonObject.optString("serviceUuid"),
-            serviceData = jsonObject.optString("serviceData"),
-            manufacturerData = jsonObject.optString("manufacturerData")
-        )
-        
-        updateDeviceList(device)
+override fun onResponse(response: String) {
+    val logType = when {
+        response.startsWith("SCAN:", ignoreCase = true) -> LogType.SCAN
+        else -> LogType.RECEIVE
+    }
+    addLogToTerminal(response, logType)
+}
+```
+
+### 2.3 스캔 중지
+
+```kotlin
+// MainActivity.kt
+private fun executeStopScan() {
+    lifecycleScope.launch {
+        val result = atCommandManager.stopScan()
+        isScanning = false
+        updateScanButton(false)
+    }
+}
+
+// AtCommandManager.kt
+suspend fun stopScan(): AtCommandResult {
+    val command = "AT+STOPSCAN"
+    sendAtCommand(command)
+    delay(200)
+    val response = receiveAtResponse()
+
+    isScanning = false
+    return AtCommandResult(
+        success = response.contains("OK", ignoreCase = true),
+        response = response
+    )
+}
+```
+
+## 3. 디바이스 연결 워크플로우
+
+### 3.1 Connect 명령
+
+```kotlin
+// MainActivity.kt
+override fun onConnect(macAddress: String) {
+    lifecycleScope.launch {
+        addLogToTerminal("AT+CONNECT=$macAddress", LogType.SEND)
+        val result = atCommandManager.connect(macAddress)
+
+        if (!result.success) {
+            addLogToTerminal("Connect failed", LogType.ERROR)
+        }
+    }
+}
+
+// AtCommandManager.kt
+suspend fun connect(macAddress: String): AtCommandResult {
+    val command = "AT+CONNECT=$macAddress"
+    sendAtCommand(command)
+    delay(200)
+    val response = receiveAtResponse()
+
+    return AtCommandResult(
+        success = response.contains("CONNECTED", ignoreCase = true),
+        response = response
+    )
+}
+```
+
+**연결 응답 예시**:
+```
+CONNECTED:MAC=AA:BB:CC:DD:EE:FF,HANDLE=1
+```
+
+### 3.2 데이터 전송
+
+```kotlin
+// MainActivity.kt
+override fun onSendData(handle: Int, hexData: String) {
+    lifecycleScope.launch {
+        addLogToTerminal("AT+SEND=$handle,$hexData", LogType.SEND)
+        val result = atCommandManager.sendData(handle, hexData)
+
+        if (!result.success) {
+            addLogToTerminal("Send failed", LogType.ERROR)
+        }
+    }
+}
+
+// AtCommandManager.kt
+suspend fun sendData(handle: Int, hexData: String): AtCommandResult {
+    val command = "AT+SEND=$handle,$hexData"
+    sendAtCommand(command)
+    delay(200)
+    val response = receiveAtResponse()
+
+    return AtCommandResult(
+        success = response.contains("OK", ignoreCase = true),
+        response = response
+    )
+}
+```
+
+**데이터 전송 예시**:
+```
+AT+SEND=1,48656C6C6F    # "Hello" in hex
+OK
+```
+
+## 4. 시리얼 통신 상세
+
+### 4.1 데이터 전송 (Send)
+
+```kotlin
+// SerialPortManager.kt
+fun send(data: ByteArray, length: Int): Int {
+    if (!isOpen) return -1
+
+    return try {
+        outputStream?.write(data, 0, length)
+        outputStream?.flush()
+        Log.d(TAG, "Sent $length bytes: ${String(data, 0, length)}")
+        0
+    } catch (e: IOException) {
+        Log.e(TAG, "Failed to send data", e)
+        -2
     }
 }
 ```
 
-## 2. BLE 광고 워크플로우
-
-### 2.1 광고 다이얼로그 시작
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant MainActivity
-    participant AdvertiseDialog
-    participant BleScan
-    participant VendorLib as At API
-
-    User->>MainActivity: "Advertise" 버튼 클릭
-    MainActivity->>AdvertiseDialog: show()
-    AdvertiseDialog->>User: 광고 시작 확인
-    User->>AdvertiseDialog: "Start" 버튼 클릭
-    AdvertiseDialog->>MainActivity: sendAdvertise() 콜백
-    MainActivity->>BleScan: startAdvertising()
-    BleScan->>VendorLib: 광고 시작 API 호출
-    VendorLib-->>Hardware: BLE 광고 신호 전송
-```
-
-### 2.2 광고 타이머 관리
-
-광고는 **10초 자동 타이머**로 관리되며, 사용자가 수동으로 제어할 수 있습니다.
-
-```mermaid
-sequenceDiagram
-    participant AdvertiseDialog
-    participant Timer
-    participant MainActivity
-
-    AdvertiseDialog->>Timer: 10초 타이머 시작
-    Timer->>Timer: 매초 카운트다운
-    Timer->>AdvertiseDialog: UI 업데이트 (9, 8, 7...)
-    
-    alt 타이머 완료
-        Timer->>AdvertiseDialog: 타이머 종료
-        AdvertiseDialog->>MainActivity: stopAdvertise()
-    else 사용자 중단
-        User->>AdvertiseDialog: "Stop" 버튼
-        AdvertiseDialog->>Timer: 타이머 취소
-        AdvertiseDialog->>MainActivity: stopAdvertise()
-    end
-```
-
-**코드 플로우**:
-```kotlin
-// BLEAdvertiseDialogFragment.kt
-private fun startAdvertiseTimer() {
-    countDownTimer = object : CountDownTimer(10000, 1000) {
-        override fun onTick(millisUntilFinished: Long) {
-            val seconds = millisUntilFinished / 1000
-            timerText.text = "${seconds}초"
-        }
-
-        override fun onFinish() {
-            stopAdvertising()
-        }
-    }.start()
-}
-```
-
-## 3. 벤더 라이브러리 통합
-
-### 3.1 At API 주요 함수
-
-| 함수명 | 용도 | 반환값 |
-|--------|------|--------|
-| `Lib_EnableMaster(boolean)` | 마스터 모드 설정 | int (결과 코드) |
-| `Lib_AtStartNewScan()` | 새 스캔 시작 | int (결과 코드) |
-| `Lib_ComRecvAT()` | 데이터 수신 | String (JSON 데이터) |
-
-### 3.2 네이티브 라이브러리 로딩
+### 4.2 데이터 수신 (Receive)
 
 ```kotlin
-// 애플리케이션 시작 시 AAR 라이브러리 자동 로딩
-// app/build.gradle.kts
-implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
-```
+// SerialPortManager.kt
+fun receive(buffer: ByteArray, length: IntArray, maxLength: Int, timeout: Int): Int {
+    if (!isOpen) return -1
 
-### 3.3 JNI 브리지
+    return try {
+        val startTime = System.currentTimeMillis()
+        var totalBytesRead = 0
 
-벤더 라이브러리는 JNI(Java Native Interface)를 통해 네이티브 코드와 연결됩니다:
-
-```
-Java/Kotlin Code → JNI Bridge → Native C/C++ Code → BLE Hardware
-```
-
-## 4. 에러 처리 및 예외 상황
-
-### 4.1 일반적인 에러 시나리오
-
-1. **BLE 비활성화**: 디바이스의 Bluetooth가 꺼져있는 경우
-2. **권한 부족**: BLE 스캔에 필요한 권한이 없는 경우
-3. **하드웨어 오류**: BLE 칩셋 문제
-4. **라이브러리 초기화 실패**: 벤더 라이브러리 로딩 문제
-
-### 4.2 에러 처리 방식
-
-```java
-// BleScan.java
-public int enableMasterMode(boolean enable) {
-    try {
-        int ret = At.Lib_EnableMaster(enable);
-        if (ret != 0) {
-            Log.e(TAG, "Failed to enable master mode: " + ret);
+        while (totalBytesRead == 0 && (System.currentTimeMillis() - startTime) < timeout) {
+            val available = inputStream?.available() ?: 0
+            if (available > 0) {
+                val bytesToRead = minOf(available, maxLength - totalBytesRead)
+                val bytesRead = inputStream?.read(buffer, totalBytesRead, bytesToRead) ?: -1
+                if (bytesRead > 0) {
+                    totalBytesRead += bytesRead
+                }
+                break
+            }
+            Thread.sleep(10)
         }
-        return ret;
-    } catch (Exception e) {
-        Log.e(TAG, "Exception in enableMasterMode", e);
-        return -1;
+
+        length[0] = totalBytesRead
+        if (totalBytesRead > 0) 0 else -4
+    } catch (e: IOException) {
+        -2
     }
 }
 ```
 
-## 5. 성능 최적화
+### 4.3 CTS 제어
 
-### 5.1 메모리 관리
-- 디바이스 리스트 크기 제한
-- 오래된 스캔 결과 자동 제거
-- 비트맵 이미지 최적화
+```kotlin
+// SerialPortManager.kt
+fun ctsControl(): Int {
+    if (!isOpen) return -1
 
-### 5.2 배터리 최적화
-- 불필요한 연속 스캔 방지
-- 백그라운드에서 스캔 빈도 조절
-- 화면 꺼짐 시 스캔 일시정지
+    return try {
+        val ret = serialPort?.ctsControl() ?: -1
+        if (ret == 0) {
+            Log.d(TAG, "CTS control (RTS toggle) successful")
+        }
+        ret
+    } catch (e: Exception) {
+        Log.e(TAG, "Error in CTS control", e)
+        -2
+    }
+}
+```
 
-### 5.3 UI 반응성
-- 백그라운드 스레드에서 데이터 처리
-- 메인 스레드 블로킹 방지
-- RecyclerView DiffUtil 사용 고려
+## 5. 에러 처리 및 복구
+
+### 5.1 연속 에러 감지
+
+```kotlin
+// AtCommandManager.kt
+private var consecutiveErrors = 0
+private val maxConsecutiveErrors = 3
+
+fun startReceiving() {
+    receiveJob = CoroutineScope(Dispatchers.IO).launch {
+        while (isActive && consecutiveErrors < maxConsecutiveErrors) {
+            try {
+                val response = receiveAtResponse()
+                if (response != null) {
+                    consecutiveErrors = 0 // 성공 시 리셋
+                } else {
+                    delay(500)
+                }
+            } catch (e: Exception) {
+                consecutiveErrors++
+                if (consecutiveErrors >= maxConsecutiveErrors) {
+                    withContext(Dispatchers.Main) {
+                        listener?.onError("Hardware connection failed")
+                    }
+                    break
+                }
+                delay(1000)
+            }
+        }
+    }
+}
+```
+
+### 5.2 타임아웃 처리
+
+```kotlin
+// AtCommandManager.kt
+fun receiveAtResponse(): String? {
+    val buffer = ByteArray(BUFFER_SIZE)
+    val lengthArray = intArrayOf(0)
+    val timeout = 1000 // 1초 타임아웃
+
+    val ret = serialPortManager.receive(buffer, lengthArray, BUFFER_SIZE, timeout)
+
+    return if (ret == 0 && lengthArray[0] > 0) {
+        String(buffer, 0, lengthArray[0]).trim()
+    } else {
+        if (ret < 0 && consecutiveErrors == 0) {
+            Log.e(TAG, "Failed to receive, ret=$ret")
+        }
+        null
+    }
+}
+```
+
+## 6. 타이밍 고려사항
+
+### Guard Time (+++  명령)
+- `+++` 명령 전후 최소 100ms 대기 필요
+- AT 모드 진입을 위한 필수 타이밍
+
+### 응답 대기 시간
+- 일반 AT 명령: 200ms
+- CTS 제어: 100ms
+- 데이터 수신 타임아웃: 1000ms
+
+### 백그라운드 수신 주기
+- 응답 있을 때: 100ms 간격
+- 응답 없을 때: 500ms 간격
