@@ -21,7 +21,13 @@ class AtCommandListDialog : DialogFragment() {
     private lateinit var btnCancel: Button
 
     // AT 명령어 목록
+    // AT+OBSERVER=<Enable>,<ScanTime>,,, <RSSI>,,<NameFilter>
     private val atCommands = listOf(
+        "AT+OBSERVER=0",                    // 스캔 중지
+        "AT+VERSION",
+        "AT+OBSERVER=1,20,,,-60,,",         // 20초 스캔, -60dBm 이상, 필터 없음
+        "AT+OBSERVER=1,20,,,-60,,020106",   // 20초 스캔, -60dBm 이상, 020106 필터
+        "AT+OBSERVER=1,20,,,-60,,5246",     // 20초 스캔, -60dBm 이상, "RF" 필터
         "AT+NAME?",
         "AT+EXIT",
         "AT+MAC?",

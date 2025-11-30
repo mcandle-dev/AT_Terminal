@@ -77,8 +77,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Get MAC"
-                android:textSize="12sp" />
+                android:text="+++"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <!-- Row 2: Scan & Connect -->

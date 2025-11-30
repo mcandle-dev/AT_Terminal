@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
     // InputDialogFragment.OnInputListener implementations
     override fun onEnableMaster(enable: Boolean) {
         lifecycleScope.launch {
-            addLogToTerminal("AT+ENABLEMASTER=${if (enable) 1 else 0}", LogType.SEND)
+            addLogToTerminal("Setting role: +++, AT+ROLE=${if (enable) 1 else 0}, AT+EXIT, +++", LogType.SEND)
 
             val result = atCommandManager.enableMaster(enable)
 
@@ -203,6 +203,13 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
 
     override fun onStartScan(params: ScanParams) {
         lifecycleScope.launch {
+            // 백그라운드 수신기가 실행 중인지 확인하고, 실행 중이 아니면 시작
+            if (!atCommandManager.isReceiving()) {
+                addLogToTerminal("Starting background receiver for scan results...", LogType.INFO)
+                atCommandManager.startReceiving()
+                addLogToTerminal("Background receiver started", LogType.INFO)
+            }
+
             val command = params.toAtCommand()
             addLogToTerminal(command, LogType.SEND)
 
@@ -211,6 +218,11 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
             if (result.success) {
                 isScanning = true
                 updateScanButton(true)
+                // 응답이 있으면 출력
+                if (result.response.isNotEmpty()) {
+                    addLogToTerminal(result.response, LogType.RECEIVE)
+                }
+                addLogToTerminal("Scanning... Scan results will appear below", LogType.INFO)
             } else {
                 addLogToTerminal(
                     "Error: ${result.errorMessage ?: "Start scan failed"}",
@@ -226,7 +238,12 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
 
             val result = atCommandManager.connect(macAddress)
 
-            if (!result.success) {
+            if (result.success) {
+                // 응답이 있으면 출력
+                if (result.response.isNotEmpty()) {
+                    addLogToTerminal(result.response, LogType.RECEIVE)
+                }
+            } else {
                 addLogToTerminal(
                     "Error: ${result.errorMessage ?: "Connect failed"}",
                     LogType.ERROR
@@ -241,7 +258,12 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
 
             val result = atCommandManager.sendData(handle, hexData)
 
-            if (!result.success) {
+            if (result.success) {
+                // 응답이 있으면 출력
+                if (result.response.isNotEmpty()) {
+                    addLogToTerminal(result.response, LogType.RECEIVE)
+                }
+            } else {
                 addLogToTerminal(
                     "Error: ${result.errorMessage ?: "Send data failed"}",
                     LogType.ERROR
@@ -252,13 +274,18 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
 
     private fun executeGetMac() {
         lifecycleScope.launch {
-            addLogToTerminal("AT+GETMAC", LogType.SEND)
+            addLogToTerminal("+++", LogType.SEND)
 
-            val result = atCommandManager.getMacAddress()
+            val result = atCommandManager.sendCustomCommand("+++")
 
-            if (!result.success) {
+            if (result.success) {
+                // 응답이 있으면 출력
+                if (result.response.isNotEmpty()) {
+                    addLogToTerminal(result.response, LogType.RECEIVE)
+                }
+            } else {
                 addLogToTerminal(
-                    "Error: ${result.errorMessage ?: "Get MAC failed"}",
+                    "Error: ${result.errorMessage ?: "Send +++ failed"}",
                     LogType.ERROR
                 )
             }
@@ -271,7 +298,12 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
 
             val result = atCommandManager.sendCustomCommand(command)
 
-            if (!result.success) {
+            if (result.success) {
+                // 응답이 있으면 출력
+                if (result.response.isNotEmpty()) {
+                    addLogToTerminal(result.response, LogType.RECEIVE)
+                }
+            } else {
                 addLogToTerminal(
                     "Error: ${result.errorMessage ?: "Send command failed"}",
                     LogType.ERROR
@@ -282,14 +314,20 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.OnInputListener {
 
     private fun executeStopScan() {
         lifecycleScope.launch {
-            addLogToTerminal("AT+STOPSCAN", LogType.SEND)
+            addLogToTerminal("Stopping scan: AT+ROLE? / AT+ROLE=1 / AT+OBSERVER=0", LogType.SEND)
 
             val result = atCommandManager.stopScan()
 
             isScanning = false
             updateScanButton(false)
 
-            if (!result.success) {
+            if (result.success) {
+                // 응답이 있으면 출력
+                if (result.response.isNotEmpty()) {
+                    addLogToTerminal(result.response, LogType.RECEIVE)
+                }
+                addLogToTerminal("Scan stopped successfully", LogType.INFO)
+            } else {
                 addLogToTerminal(
                     "Error: ${result.errorMessage ?: "Stop scan failed"}",
                     LogType.ERROR

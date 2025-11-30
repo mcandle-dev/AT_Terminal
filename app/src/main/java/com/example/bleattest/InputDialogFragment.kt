@@ -153,11 +153,9 @@ class InputDialogFragment : DialogFragment() {
             }.apply()
 
             val params = ScanParams(
-                macAddress = macAddress,
-                broadcastName = broadcastName,
+                scanTime = 20,  // Default scan time
                 minRssi = minRssi,
-                manufacturerId = manufacturerId,
-                data = data
+                nameFilter = data  // Use data field as HEX name filter
             )
 
             listener?.onStartScan(params)

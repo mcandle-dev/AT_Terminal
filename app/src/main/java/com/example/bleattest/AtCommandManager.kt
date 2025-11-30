@@ -163,7 +163,7 @@ class AtCommandManager {
      * AT 명령 시퀀스:
      * 0. CTS 제어 (Beacon 모드 종료)
      * 1. +++ (AT 모드 진입, 응답 없음)
-     * 2. AT+OBSERVER=0 (Master) 또는 AT+OBSERVER=1 (Observer)
+     * 2. AT+ROLE=1 (Master 모드) 또는 AT+ROLE=0 (Slave 모드)
      * 3. AT+EXIT (AT 모드 종료)
      * 4. +++ (AT 모드 재진입, 응답 없음)
      */
@@ -203,28 +203,28 @@ class AtCommandManager {
                 delay(1000) // Guard Time: EFR32BG22 requires minimum 1 second for AT mode entry
                 Log.d(TAG, "Guard Time complete, AT mode should be active now")
 
-                // Step 2: OBSERVER 모드 설정 (0 = Master mode, 1 = Observer mode)
-                val observerCommand = if (enable) "AT+OBSERVER=0" else "AT+OBSERVER=1"
-                Log.d(TAG, "Sending command: $observerCommand")
-                ret = sendAtCommand(observerCommand)
+                // Step 2: ROLE 설정 (1 = Master 모드, 0 = Slave 모드)
+                val roleCommand = if (enable) "AT+ROLE=1" else "AT+ROLE=0"
+                Log.d(TAG, "Sending command: $roleCommand")
+                ret = sendAtCommand(roleCommand)
                 if (ret != 0) {
                     return@withContext AtCommandResult(
                         success = false,
                         response = "",
-                        errorMessage = "Failed to send OBSERVER command",
+                        errorMessage = "Failed to send ROLE command",
                         executionTime = System.currentTimeMillis() - startTime
                     )
                 }
                 delay(RESPONSE_TIMEOUT)
 
                 // 응답 확인
-                val observerResponse = receiveAtResponse() ?: ""
-                Log.d(TAG, "OBSERVER response: $observerResponse")
-                if (!observerResponse.contains("OK", ignoreCase = true)) {
+                val roleResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "ROLE response: $roleResponse")
+                if (!roleResponse.contains("OK", ignoreCase = true)) {
                     return@withContext AtCommandResult(
                         success = false,
-                        response = observerResponse,
-                        errorMessage = "OBSERVER command did not return OK",
+                        response = roleResponse,
+                        errorMessage = "ROLE command did not return OK",
                         executionTime = System.currentTimeMillis() - startTime
                     )
                 }
@@ -309,65 +309,192 @@ class AtCommandManager {
 
     /**
      * Start BLE Scan
+     * AT 명령 시퀀스:
+     * 1. +++ (AT 모드 진입, Guard Time 1초)
+     * 2. AT+OBSERVER=1,<ScanTime>,,,<RSSI>,,<NameFilter> (스캔 시작)
+     * 3. AT+EXIT (AT 모드 종료)
+     * 4. +++ (AT 모드 재진입, Guard Time 1초)
      */
     suspend fun startScan(params: ScanParams): AtCommandResult {
         return withContext(Dispatchers.IO) {
             val startTime = System.currentTimeMillis()
-            val command = params.toAtCommand()
 
-            val ret = sendAtCommand(command)
-            if (ret != 0) {
-                return@withContext AtCommandResult(
+            try {
+                Log.d(TAG, "Waiting 1000ms before +++ (pre-Guard Time)...")
+                delay(1000) // Guard Time before +++
+
+                // Step 1: AT 모드 진입 (+++ 응답 없음)
+                Log.d(TAG, "Sending command: +++")
+                var ret = sendAtCommand("+++")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send +++ command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+
+                Log.d(TAG, "Waiting 1000ms Guard Time for AT mode entry...")
+                delay(1000) // Guard Time: EFR32BG22 requires minimum 1 second for AT mode entry
+                Log.d(TAG, "Guard Time complete, AT mode should be active now")
+
+                // Step 2: OBSERVER 명령 전송 (스캔 시작)
+                val command = params.toAtCommand()
+                Log.d(TAG, "Sending command: $command")
+                ret = sendAtCommand(command)
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send OBSERVER command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+
+                // 응답 확인
+                val observerResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "OBSERVER response: $observerResponse")
+                if (!observerResponse.contains("OK", ignoreCase = true)) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = observerResponse,
+                        errorMessage = "OBSERVER command did not return OK",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+
+                // Step 3: AT 모드 종료
+                Log.d(TAG, "Sending command: AT+EXIT")
+                ret = sendAtCommand("AT+EXIT")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send EXIT command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+                val exitResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "EXIT response: $exitResponse")
+
+                // Step 4: AT 모드 재진입 (+++ 응답 없음)
+                Log.d(TAG, "Sending command: +++")
+                ret = sendAtCommand("+++")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send second +++ command",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(1000) // Guard Time: EFR32BG22 requires minimum 1 second for AT mode re-entry
+
+                val executionTime = System.currentTimeMillis() - startTime
+                isScanning = true
+                Log.d(TAG, "Scan started successfully")
+
+                AtCommandResult(
+                    success = true,
+                    response = observerResponse,
+                    executionTime = executionTime
+                )
+            } catch (e: Exception) {
+                Log.e(TAG, "Error in startScan: ${e.message}", e)
+                AtCommandResult(
                     success = false,
                     response = "",
-                    errorMessage = "Failed to send command, code: $ret",
+                    errorMessage = "Error: ${e.message}",
                     executionTime = System.currentTimeMillis() - startTime
                 )
             }
-
-            delay(RESPONSE_TIMEOUT)
-            val response = receiveAtResponse() ?: ""
-            val executionTime = System.currentTimeMillis() - startTime
-
-            isScanning = response.contains("OK", ignoreCase = true)
-
-            AtCommandResult(
-                success = isScanning,
-                response = response,
-                executionTime = executionTime
-            )
         }
     }
 
     /**
      * Stop BLE Scan
+     * AT 명령 시퀀스:
+     * 1. AT+ROLE? - 현재 Role 확인
+     * 2. AT+ROLE=1 - Master 모드로 설정
+     * 3. AT+OBSERVER=0 - Observer 모드 비활성화 (스캔 중지)
      */
     suspend fun stopScan(): AtCommandResult {
         return withContext(Dispatchers.IO) {
             val startTime = System.currentTimeMillis()
-            val command = "AT+STOPSCAN"
+            val responses = mutableListOf<String>()
 
-            val ret = sendAtCommand(command)
-            if (ret != 0) {
-                return@withContext AtCommandResult(
+            try {
+                // Step 1: AT+ROLE? - 현재 Role 확인
+                Log.d(TAG, "Step 1: Sending AT+ROLE?")
+                var ret = sendAtCommand("AT+ROLE?")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = "",
+                        errorMessage = "Failed to send AT+ROLE?, code: $ret",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+                val roleQueryResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "AT+ROLE? response: $roleQueryResponse")
+                responses.add("AT+ROLE?: $roleQueryResponse")
+
+                // Step 2: AT+ROLE=1 - Master 모드 설정
+                Log.d(TAG, "Step 2: Sending AT+ROLE=1")
+                ret = sendAtCommand("AT+ROLE=1")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = responses.joinToString("\n"),
+                        errorMessage = "Failed to send AT+ROLE=1, code: $ret",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+                val roleSetResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "AT+ROLE=1 response: $roleSetResponse")
+                responses.add("AT+ROLE=1: $roleSetResponse")
+
+                // Step 3: AT+OBSERVER=0 - Observer 모드 비활성화 (스캔 중지)
+                Log.d(TAG, "Step 3: Sending AT+OBSERVER=0")
+                ret = sendAtCommand("AT+OBSERVER=0")
+                if (ret != 0) {
+                    return@withContext AtCommandResult(
+                        success = false,
+                        response = responses.joinToString("\n"),
+                        errorMessage = "Failed to send AT+OBSERVER=0, code: $ret",
+                        executionTime = System.currentTimeMillis() - startTime
+                    )
+                }
+                delay(RESPONSE_TIMEOUT)
+                val observerResponse = receiveAtResponse() ?: ""
+                Log.d(TAG, "AT+OBSERVER=0 response: $observerResponse")
+                responses.add("AT+OBSERVER=0: $observerResponse")
+
+                val executionTime = System.currentTimeMillis() - startTime
+                isScanning = false
+
+                // 최소한 AT+OBSERVER=0가 OK를 반환하면 성공으로 간주
+                val success = observerResponse.contains("OK", ignoreCase = true)
+
+                AtCommandResult(
+                    success = success,
+                    response = responses.joinToString("\n"),
+                    executionTime = executionTime
+                )
+            } catch (e: Exception) {
+                Log.e(TAG, "Error in stopScan: ${e.message}", e)
+                AtCommandResult(
                     success = false,
-                    response = "",
-                    errorMessage = "Failed to send command, code: $ret",
+                    response = responses.joinToString("\n"),
+                    errorMessage = "Error: ${e.message}",
                     executionTime = System.currentTimeMillis() - startTime
                 )
             }
-
-            delay(RESPONSE_TIMEOUT)
-            val response = receiveAtResponse() ?: ""
-            val executionTime = System.currentTimeMillis() - startTime
-
-            isScanning = false
-
-            AtCommandResult(
-                success = response.contains("OK", ignoreCase = true),
-                response = response,
-                executionTime = executionTime
-            )
         }
     }
 
@@ -446,6 +573,22 @@ class AtCommandManager {
                     response = "",
                     errorMessage = "Failed to send command, code: $ret",
                     executionTime = System.currentTimeMillis() - startTime
+                )
+            }
+
+            // +++ 명령은 응답이 있을 수도 있고 없을 수도 있음
+            // 응답을 기다려보되, 응답이 없어도 성공으로 처리
+            if (command == "+++") {
+                delay(RESPONSE_TIMEOUT)
+                val response = receiveAtResponse() ?: ""
+                val executionTime = System.currentTimeMillis() - startTime
+
+                Log.d(TAG, "+++ command response: '$response' (length: ${response.length})")
+
+                return@withContext AtCommandResult(
+                    success = true,
+                    response = if (response.isNotEmpty()) response else "OK (no response)",
+                    executionTime = executionTime
                 )
             }
 
